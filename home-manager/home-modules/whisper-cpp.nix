@@ -295,6 +295,8 @@ DAEMON_PY
     SOCKET="/tmp/whisper-cpp-daemon.sock"
     MODEL_PATH="${config.services.dictation-whispercpp.modelPath}"
     
+
+    
     # Check if daemon is running and responsive
     if [ ! -S "$SOCKET" ] || ! echo "status" | ${pkgs.socat}/bin/socat -T 2 - UNIX-CONNECT:"$SOCKET" >/dev/null 2>&1; then
       # Auto-setup model if missing (one-time setup)

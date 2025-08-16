@@ -127,6 +127,7 @@
       "niri/window"
     ],
     "modules-right": [
+      "custom/dictate",
       "idle_inhibitor",
       "pulseaudio",
       "backlight",
@@ -197,6 +198,15 @@
     },
     "wlr/mode": {
       "format": "<span style=\"italic\">{}</span>"
+    },
+    "custom/dictate": {
+      "exec": "dictate-status",
+      "return-type": "json",
+      "interval": 2,
+      "format": "{text}",
+      "tooltip": true,
+      "on-click": "dictate-fw-ptt-toggle",
+      "on-click-right": "dictate-wc-ptt-toggle"
     }
   }
 ]

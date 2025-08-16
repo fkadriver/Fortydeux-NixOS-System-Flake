@@ -22,7 +22,7 @@
         # Choose the order of the modules
         modules-left = ["custom/launcher" "clock" "custom/weather" "hyprland/workspaces" "hyprland/window"];
         # modules-center = [ "custom/media" ];
-        modules-right = ["idle_inhibitor" "pulseaudio" "backlight" "network" "cpu" "memory" "temperature" "battery" "battery#bat2" "tray" "custom/power"];
+        modules-right = ["custom/dictate" "idle_inhibitor" "pulseaudio" "backlight" "network" "cpu" "memory" "temperature" "battery" "battery#bat2" "tray" "custom/power"];
 
         # Modules configuration
         "hyprland/workspaces" = {
@@ -193,6 +193,16 @@
           on-click = "exec wlogout";
           on-click-right = "pkill wlogout";
         };
+
+        "custom/dictate" = {
+          exec = "dictate-status";
+          return-type = "json";
+          interval = 2;
+          format = "{text}";
+          tooltip = true;
+          on-click = "dictate-fw-ptt-toggle";
+          on-click-right = "dictate-wc-ptt-toggle";
+        };
       };
     };
     
@@ -260,6 +270,7 @@
       #custom-trayer,
       #custom-power,
       #custom-launcher,
+      #custom-dictate,
       #idle_inhibitor,
       #cpu,
       #memory,
@@ -321,6 +332,18 @@
 
       #workspaces {
         color: @theme_fg_color;
+      }
+
+      #custom-dictate.recording { 
+        color: #ff6b6b; 
+        background: @theme_bg_color;
+        animation: pulse 2s infinite;
+      }
+      #custom-dictate.ready { 
+        color: #51afef; 
+      }
+      #custom-dictate.offline { 
+        color: #888; 
       }
       
     '';

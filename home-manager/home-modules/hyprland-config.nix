@@ -423,14 +423,14 @@
       bind = $mainMod SHIFT, Return, exec, dictate-wc-ptt-auto 5
 
       # Voice dictation - Toggle
-      bind = $mainMod, Caps_Lock, exec, dictate-fw-ptt-toggle  
-      bind = $mainMod SHIFT, Caps_Lock, exec, dictate-wc-ptt-toggle
+      bind = $mainMod, backslash, exec, dictate-fw-ptt-toggle  
+      bind = $mainMod SHIFT, backslash, exec, dictate-wc-ptt-toggle
       
       # Voice dictation - True push-to-talk (hold key)
-      # bind = $mainMod, Caps_Lock, exec, dictate-fw-ptt-start
-      # bindr = $mainMod, Caps_Lock, exec, dictate-fw-ptt-stop
-      # bind = $mainMod SHIFT, Caps_Lock, exec, dictate-wc-ptt-start  
-      # bindr = $mainMod SHIFT, Caps_Lock, exec, dictate-wc-ptt-stop
+      # bind = $mainMod, backslash, exec, dictate-fw-ptt-start
+      # bindr = $mainMod, backslash, exec, dictate-fw-ptt-stop
+      # bind = $mainMod SHIFT, backslash, exec, dictate-wc-ptt-start  
+      # bindr = $mainMod SHIFT, backslash, exec, dictate-wc-ptt-stop
 
 
       # Begin Hyprscroller

@@ -652,8 +652,8 @@
         Mod+Shift+Return repeat=false { spawn "bash" "-c" "dictate-wc-ptt-auto"; }
         
         // Voice Dictation - Locking/Toggle
-        Mod+Caps_Lock repeat=false { spawn "bash" "-c" "dictate-fw-ptt-toggle"; }
-        Mod+Shift+Caps_Lock repeat=false { spawn "bash" "-c" "dictate-wc-ptt-toggle"; }
+        Mod+backslash repeat=false { spawn "bash" "-c" "dictate-fw-ptt-toggle"; }
+        Mod+Shift+backslash repeat=false { spawn "bash" "-c" "dictate-wc-ptt-toggle"; }
 
         // You can also use a shell. Do this if you need pipes, multiple commands, etc.
         // Note: the entire command goes as a single argument in the end.

@@ -231,14 +231,14 @@
     };
     dictation-faster = {
         enable = true;
-        model = "tiny";       # faster for real-time transcription
+        model = "tiny";       # Toggle model here
         language = "en";
         device = "cpu";       # set "cuda" if you have NVIDIA + CUDA set up
     };
 
     dictation-whispercpp = {
         enable = true;
-        model = "small";       # larger "small" model for comparison
+        model = "tiny";     # Toggle model here
         language = "en";
     };
   };

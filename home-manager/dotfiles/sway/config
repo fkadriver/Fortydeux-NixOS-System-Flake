@@ -127,14 +127,14 @@ exec swayidle -w \
     bindsym --no-repeat $mod+Shift+Return exec "dictate-wc-ptt-auto 5"
 
     # Voice dictation - Toggle
-    bindsym --no-repeat $mod+Caps_Lock exec "dictate-fw-ptt-toggle"
-    bindsym --no-repeat $mod+Shift+Caps_Lock exec "dictate-wc-ptt-toggle"
+    bindsym --no-repeat $mod+backslash exec "dictate-fw-ptt-toggle"
+    bindsym --no-repeat $mod+Shift+backslash exec "dictate-wc-ptt-toggle"
     
     # Voice dictation - True push-to-talk (hold key)
-    # bindsym $mod+Caps_Lock exec "dictate-fw-ptt-start"
-    # bindsym --on-release $mod+Caps_Lock exec "dictate-fw-ptt-stop"
-    # bindsym $mod+Shift+Caps_Lock exec "dictate-wc-ptt-start"
-    # bindsym --on-release $mod+Shift+Caps_Lock exec "dictate-wc-ptt-stop"
+    # bindsym $mod+backslash exec "dictate-fw-ptt-start"
+    # bindsym --on-release $mod+backslash exec "dictate-fw-ptt-stop"
+    # bindsym $mod+Shift+backslash exec "dictate-wc-ptt-start"
+    # bindsym --on-release $mod+Shift+backslash exec "dictate-wc-ptt-stop"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

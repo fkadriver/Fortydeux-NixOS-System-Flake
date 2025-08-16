@@ -16,6 +16,7 @@
 #custom-trayer,
 #custom-power,
 #custom-launcher,
+#custom-dictate,
 #idle_inhibitor,
 #cpu,
 #memory,
@@ -130,4 +131,16 @@ tooltip {
   color: @accent_color;
   background: @headerbar_bg_color;
   border-radius: 10px;
+}
+
+#custom-dictate.recording { 
+  color: #ff6b6b; 
+  background: @theme_bg_color;
+  animation: pulse 2s infinite;
+}
+#custom-dictate.ready { 
+  color: #51afef; 
+}
+#custom-dictate.offline { 
+  color: #888; 
 }

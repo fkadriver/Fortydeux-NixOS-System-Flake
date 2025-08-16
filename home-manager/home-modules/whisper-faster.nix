@@ -289,6 +289,8 @@ DAEMON_PY
   dictate-fw-ptt-start = pkgs.writeShellScriptBin "dictate-fw-ptt-start" ''
     SOCKET="/tmp/faster-whisper-daemon.sock"
     
+
+    
     # Check if daemon is running and responsive
     if [ ! -S "$SOCKET" ] || ! echo "status" | ${pkgs.socat}/bin/socat -T 2 - UNIX-CONNECT:"$SOCKET" >/dev/null 2>&1; then
       echo "Starting faster-whisper daemon..." >&2
@@ -386,6 +388,37 @@ DAEMON_PY
     ${dictate-fw-ptt-stop}/bin/dictate-fw-ptt-stop
   '';
 
+  # Waybar status widget for recording indicator
+  dictate-status = pkgs.writeShellScriptBin "dictate-status" ''
+    SOCKET_FW="/tmp/faster-whisper-daemon.sock"
+    SOCKET_WC="/tmp/whisper-cpp-daemon.sock"
+    
+    # Check daemon statuses
+    FW_STATUS="idle"
+    WC_STATUS="idle"
+    
+    if [ -S "$SOCKET_FW" ]; then
+      FW_STATUS="$(echo "status" | ${pkgs.socat}/bin/socat -T 1 - UNIX-CONNECT:"$SOCKET_FW" 2>/dev/null || echo "idle")"
+    fi
+    
+    if [ -S "$SOCKET_WC" ]; then
+      WC_STATUS="$(echo "status" | ${pkgs.socat}/bin/socat -T 1 - UNIX-CONNECT:"$SOCKET_WC" 2>/dev/null || echo "idle")"
+    fi
+    
+    # Output JSON for waybar with detailed status
+    if [[ "$FW_STATUS" == *"recording"* ]]; then
+      echo '{"text": "🎙️ FW", "class": "recording", "tooltip": "Faster-Whisper Recording"}'
+    elif [[ "$WC_STATUS" == *"recording"* ]]; then
+      echo '{"text": "🎙️ WC", "class": "recording", "tooltip": "Whisper-CPP Recording"}'
+    elif [ -S "$SOCKET_FW" ] || [ -S "$SOCKET_WC" ]; then
+      echo '{"text": "🎤", "class": "ready", "tooltip": "Voice Dictation Ready"}'
+    else
+      echo '{"text": "🎤", "class": "offline", "tooltip": "Voice Dictation Offline"}'
+    fi
+  '';
+
+
+
 in
 {
   options.services.dictation-faster = {
@@ -419,6 +452,7 @@ in
       dictate-fw-ptt-stop
       dictate-fw-ptt-toggle
       dictate-fw-ptt-auto
+      dictate-status
     ] ++ lib.optionals (!config.services.dictation-whispercpp.enable) [
       # Only install Python env if whisper-cpp isn't also enabled
       pyEnvWhisper

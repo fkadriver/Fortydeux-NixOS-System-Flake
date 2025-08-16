@@ -72,8 +72,8 @@ riverctl map normal Super Return spawn "dictate-fw-ptt-auto 5"
 riverctl map normal Super+Shift Return spawn "dictate-wc-ptt-auto 5"
 
 # Voice dictation - Lock/Toggle
-riverctl map normal Super Caps_Lock spawn dictate-fw-ptt-toggle
-riverctl map normal Super+Shift Caps_Lock spawn dictate-wc-ptt-toggle  
+riverctl map normal Super backslash spawn dictate-fw-ptt-toggle
+riverctl map normal Super+Shift backslash spawn dictate-wc-ptt-toggle  
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
