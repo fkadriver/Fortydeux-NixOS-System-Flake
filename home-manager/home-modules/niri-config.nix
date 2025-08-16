@@ -647,8 +647,13 @@
         // Mod+T { spawn "foot"; }
         // Mod+R { spawn "wofi"; }
 
-        Mod+Return { spawn "bash" "-c" "dictate-fw-ptt-start"; }
-        Mod+Shift+Return { spawn "bash" "-c" "dictate-fw-ptt-stop"; }
+        // Voice Dictation - Momentary
+        Mod+Return repeat=false { spawn "bash" "-c" "dictate-fw-ptt-auto"; }
+        Mod+Shift+Return repeat=false { spawn "bash" "-c" "dictate-wc-ptt-auto"; }
+        
+        // Voice Dictation - Locking/Toggle
+        Mod+Caps_Lock repeat=false { spawn "bash" "-c" "dictate-fw-ptt-toggle"; }
+        Mod+Shift+Caps_Lock repeat=false { spawn "bash" "-c" "dictate-wc-ptt-toggle"; }
 
         // You can also use a shell. Do this if you need pipes, multiple commands, etc.
         // Note: the entire command goes as a single argument in the end.

@@ -8,11 +8,12 @@ let
       });
     };
   };
-  pyEnv = pkgs.python313.withPackages (ps: with ps; [
-    faster-whisper
-    soundfile        # for reading wavs if needed
-    numpy
-    sounddevice     # for real-time audio capture
+  # Shared Python env - includes all packages needed by both whisper systems
+  pyEnvWhisper = pkgs.python313.withPackages (ps: with ps; [
+    faster-whisper   # for faster-whisper daemon
+    sounddevice      # for real-time audio capture (both systems)
+    soundfile        # for reading wavs (both systems)
+    numpy           # for audio processing (both systems)
   ]);
   
   # Daemon script
@@ -20,7 +21,7 @@ let
     export WHISPER_MODEL="${config.services.dictation-faster.model}"
     export WHISPER_LANGUAGE="${config.services.dictation-faster.language}"
     export WHISPER_DEVICE="${config.services.dictation-faster.device}"
-    exec ${pyEnv}/bin/python - << 'DAEMON_PY'
+    exec ${pyEnvWhisper}/bin/python - << 'DAEMON_PY'
 #!/usr/bin/env python3
 """
 Real-time whisper transcription daemon.
@@ -352,6 +353,39 @@ DAEMON_PY
     pkill -f faster-whisper-daemon || true
   '';
 
+  # Toggle script for single keybinding
+  dictate-fw-ptt-toggle = pkgs.writeShellScriptBin "dictate-fw-ptt-toggle" ''
+    SOCKET="/tmp/faster-whisper-daemon.sock"
+    
+    # Check daemon status
+    if [ -S "$SOCKET" ]; then
+      STATUS="$(echo "status" | ${pkgs.socat}/bin/socat -T 2 - UNIX-CONNECT:"$SOCKET" 2>/dev/null || echo "idle")"
+      if [[ "$STATUS" == *"recording"* ]]; then
+        # Currently recording, so stop
+        ${dictate-fw-ptt-stop}/bin/dictate-fw-ptt-stop
+      else
+        # Not recording, so start
+        ${dictate-fw-ptt-start}/bin/dictate-fw-ptt-start
+      fi
+    else
+      # Daemon not running, start recording
+      ${dictate-fw-ptt-start}/bin/dictate-fw-ptt-start
+    fi
+  '';
+
+  # Auto-stop recording after timeout (push-to-talk style)
+  dictate-fw-ptt-auto = pkgs.writeShellScriptBin "dictate-fw-ptt-auto" ''
+    SOCKET="/tmp/faster-whisper-daemon.sock"
+    TIMEOUT=''${1:-5}  # Default 5 seconds, or pass as argument
+    
+    # Start recording
+    ${dictate-fw-ptt-start}/bin/dictate-fw-ptt-start
+    
+    # Wait for timeout, then stop
+    sleep "$TIMEOUT"
+    ${dictate-fw-ptt-stop}/bin/dictate-fw-ptt-stop
+  '';
+
 in
 {
   options.services.dictation-faster = {
@@ -378,12 +412,16 @@ in
     home.packages = with pkgs; [
       wtype
       socat   # for Unix socket communication
-      pyEnv
       faster-whisper-daemon
       faster-whisper-daemon-start
       faster-whisper-daemon-stop
       dictate-fw-ptt-start
       dictate-fw-ptt-stop
+      dictate-fw-ptt-toggle
+      dictate-fw-ptt-auto
+    ] ++ lib.optionals (!config.services.dictation-whispercpp.enable) [
+      # Only install Python env if whisper-cpp isn't also enabled
+      pyEnvWhisper
     ];
   };
 }

@@ -255,7 +255,6 @@
         "ALT, SPACE, exec, anyrun"
         "$mainMod, S, exec, kitty"
         "CTRL ALT, T, exec, wezterm"
-        "$mainMod, RETURN, exec, ghostty"
         "$mainMod SHIFT, T, exec, alacritty"
         "$mainMod, Q, killactive,"
         "$mainModSHIFT, E, exit,"
@@ -418,6 +417,21 @@
 
       # Screenshots
       bind = , PRINT, exec, grim -g "$(slurp)"
+      
+      # Voice dictation - Momentary
+      bind = $mainMod, Return, exec, dictate-fw-ptt-auto 5
+      bind = $mainMod SHIFT, Return, exec, dictate-wc-ptt-auto 5
+
+      # Voice dictation - Toggle
+      bind = $mainMod, Caps_Lock, exec, dictate-fw-ptt-toggle  
+      bind = $mainMod SHIFT, Caps_Lock, exec, dictate-wc-ptt-toggle
+      
+      # Voice dictation - True push-to-talk (hold key)
+      # bind = $mainMod, Caps_Lock, exec, dictate-fw-ptt-start
+      # bindr = $mainMod, Caps_Lock, exec, dictate-fw-ptt-stop
+      # bind = $mainMod SHIFT, Caps_Lock, exec, dictate-wc-ptt-start  
+      # bindr = $mainMod SHIFT, Caps_Lock, exec, dictate-wc-ptt-stop
+
 
       # Begin Hyprscroller
       # Move focus with mainMod + arrow keys

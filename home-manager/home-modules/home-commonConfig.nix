@@ -238,7 +238,7 @@
 
     dictation-whispercpp = {
         enable = true;
-        modelPath = "${pkgs.openai-whisper-cpp}/share/whisper/models/ggml-small.en.bin";
+        model = "small";       # larger "small" model for comparison
         language = "en";
     };
   };
