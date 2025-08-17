@@ -238,7 +238,7 @@
 
     dictation-whispercpp = {
         enable = true;
-        model = "tiny";     # Toggle model here
+        model = "small";      # Toggle model here
         language = "en";
     };
   };

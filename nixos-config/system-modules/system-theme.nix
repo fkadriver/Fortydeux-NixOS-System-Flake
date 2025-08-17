@@ -26,6 +26,7 @@
 
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme
+    gnome-characters
     gnome-icon-theme
     hicolor-icon-theme
     hicolor-icon-theme

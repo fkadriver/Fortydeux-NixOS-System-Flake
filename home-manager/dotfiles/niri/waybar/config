@@ -203,7 +203,7 @@
       "exec": "dictate-status",
       "return-type": "json",
       "interval": 2,
-      "format": "{text}",
+      "format": "{}",
       "tooltip": true,
       "on-click": "dictate-fw-ptt-toggle",
       "on-click-right": "dictate-wc-ptt-toggle"

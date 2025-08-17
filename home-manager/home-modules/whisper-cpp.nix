@@ -43,6 +43,7 @@ class WhisperCppDaemon:
         self.language = language
         self.socket_path = "/tmp/whisper-cpp-daemon.sock"
         self.recording = False
+        self.processing = False
         self.audio_buffer = []
         self.sample_rate = 16000
         self.min_audio_length = 0.5
@@ -111,6 +112,7 @@ class WhisperCppDaemon:
             
         self.log("Transcribing")
         self.recording = False
+        self.processing = True
         
         try:
             self.stream.stop()
@@ -130,6 +132,7 @@ class WhisperCppDaemon:
         # Skip transcription if too short
         if duration < self.min_audio_length:
             self.debug(f"Audio too short ({duration:.2f}s), skipping")
+            self.processing = False
             return ""
             
         # Memory safety: limit max recording length to 60 seconds
@@ -157,13 +160,16 @@ class WhisperCppDaemon:
                 if result.returncode == 0:
                     text = result.stdout.strip()
                     self.log(f"Result: '{text}'")
+                    self.processing = False
                     return text
                 else:
                     self.log(f"whisper.cpp failed: {result.stderr}")
+                    self.processing = False
                     return ""
                     
             except Exception as e:
                 self.log(f"Transcription failed: {e}")
+                self.processing = False
                 return ""
             finally:
                 # Clean up temp file and audio buffer
@@ -189,7 +195,12 @@ class WhisperCppDaemon:
                 response = result if result else "no_result"
             elif command == "status":
                 uptime = time.time() - self.start_time
-                status = "recording" if self.recording else "idle"
+                if self.processing:
+                    status = "processing"
+                elif self.recording:
+                    status = "recording"
+                else:
+                    status = "idle"
                 response = f"{status} (uptime: {uptime/3600:.1f}h)"
                 
                 # Auto-shutdown after 24 hours

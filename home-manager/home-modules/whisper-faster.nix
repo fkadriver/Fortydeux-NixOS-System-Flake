@@ -50,6 +50,7 @@ class WhisperDaemon:
         self.model = None
         self.socket_path = "/tmp/faster-whisper-daemon.sock"
         self.recording = False
+        self.processing = False
         self.audio_buffer = []
         self.sample_rate = 16000
         self.min_audio_length = 0.5  # Minimum 0.5s before transcription
@@ -130,6 +131,7 @@ class WhisperDaemon:
             
         self.log("Transcribing")
         self.recording = False
+        self.processing = True
         
         try:
             self.stream.stop()
@@ -139,6 +141,7 @@ class WhisperDaemon:
             
         if not self.audio_buffer:
             self.debug("No audio data recorded")
+            self.processing = False
             return ""
             
         # Concatenate audio buffer
@@ -149,6 +152,7 @@ class WhisperDaemon:
         # Skip transcription if too short
         if duration < self.min_audio_length:
             self.debug(f"Audio too short ({duration:.2f}s), skipping")
+            self.processing = False
             return ""
             
         # Memory safety: limit max recording length to 60 seconds
@@ -175,10 +179,12 @@ class WhisperDaemon:
                 
                 result = " ".join(s.text.strip() for s in segments).strip()
                 self.log(f"Result: '{result}'")
+                self.processing = False
                 return result
                 
             except Exception as e:
                 self.log(f"Transcription failed: {e}")
+                self.processing = False
                 return ""
             finally:
                 # Clean up temp file and audio buffer
@@ -204,7 +210,12 @@ class WhisperDaemon:
                 response = result if result else "no_result"
             elif command == "status":
                 uptime = time.time() - self.start_time
-                status = "recording" if self.recording else "idle"
+                if self.processing:
+                    status = "processing"
+                elif self.recording:
+                    status = "recording"
+                else:
+                    status = "idle"
                 response = f"{status} (uptime: {uptime/3600:.1f}h)"
                 
                 # Auto-shutdown after 24 hours
@@ -405,15 +416,19 @@ DAEMON_PY
       WC_STATUS="$(echo "status" | ${pkgs.socat}/bin/socat -T 1 - UNIX-CONNECT:"$SOCKET_WC" 2>/dev/null || echo "idle")"
     fi
     
-    # Output JSON for waybar with detailed status
-    if [[ "$FW_STATUS" == *"recording"* ]]; then
-      echo '{"text": "🎙️ FW", "class": "recording", "tooltip": "Faster-Whisper Recording"}'
+    # Output JSON with icons directly in text
+    if [[ "$FW_STATUS" == *"processing"* ]]; then
+      echo '{"text": "✎", "class": "processing-fw", "tooltip": "Faster-Whisper Processing"}'
+    elif [[ "$WC_STATUS" == *"processing"* ]]; then
+      echo '{"text": "✎", "class": "processing-wc", "tooltip": "Whisper-CPP Processing"}'
+    elif [[ "$FW_STATUS" == *"recording"* ]]; then
+      echo '{"text": "⏺", "class": "recording-fw", "tooltip": "Faster-Whisper Recording"}'
     elif [[ "$WC_STATUS" == *"recording"* ]]; then
-      echo '{"text": "🎙️ WC", "class": "recording", "tooltip": "Whisper-CPP Recording"}'
+      echo '{"text": "⏺", "class": "recording-wc", "tooltip": "Whisper-CPP Recording"}'
     elif [ -S "$SOCKET_FW" ] || [ -S "$SOCKET_WC" ]; then
-      echo '{"text": "🎤", "class": "ready", "tooltip": "Voice Dictation Ready"}'
+      echo '{"text": "🎙", "class": "ready", "tooltip": "Voice Dictation Ready"}'
     else
-      echo '{"text": "🎤", "class": "offline", "tooltip": "Voice Dictation Offline"}'
+      echo '{"text": "𑽍", "class": "offline", "tooltip": "Voice Dictation Offline"}'
     fi
   '';
 

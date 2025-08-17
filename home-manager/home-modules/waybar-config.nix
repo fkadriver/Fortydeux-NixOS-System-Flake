@@ -198,7 +198,7 @@
           exec = "dictate-status";
           return-type = "json";
           interval = 2;
-          format = "{text}";
+          format = "{}";
           tooltip = true;
           on-click = "dictate-fw-ptt-toggle";
           on-click-right = "dictate-wc-ptt-toggle";
@@ -210,7 +210,7 @@
       * {
         border: none;
         border-radius: 0px;
-        font-family: Cartograph CF Nerd Font, monospace;
+        font-family: "Cartograph CF Nerd Font", monospace;
         font-weight: bold;
         font-size: 14px;
         min-height: 0px;
@@ -334,17 +334,26 @@
         color: @theme_fg_color;
       }
 
-      #custom-dictate.recording { 
+      #custom-dictate {
+        color: #51afef;
+      }
+      
+      #custom-dictate.recording-fw,
+      #custom-dictate.recording-wc { 
         color: #ff6b6b; 
-        background: @theme_bg_color;
+      background: @theme_bg_color;
         animation: pulse 2s infinite;
       }
-      #custom-dictate.ready { 
-        color: #51afef; 
-      }
-      #custom-dictate.offline { 
-        color: #888; 
-      }
+      
+      #custom-dictate.processing-fw,
+      #custom-dictate.processing-wc { 
+      color: #da8548; 
+       background: @theme_bg_color;
+       }
+       
+       #custom-dictate.offline { 
+         color: #888; 
+       }
       
     '';
   };
