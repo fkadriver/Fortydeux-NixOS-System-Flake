@@ -63,4 +63,11 @@
     };
   };
 
+  services.stalonetray = {
+    enable = true;
+    config = {
+      icon_size = 100;
+    };
+  };
+
 }

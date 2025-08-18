@@ -85,6 +85,7 @@
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
     tldr # Simplified and community-driven man pages
     tmux #Terminal multiplexer
+    trayer # Lightweight GTK2-based system tray for unix desktp
     vault-tasks #TUI Markdown Task manager
     vscode #Open source source code editor developed by Microsoft for Windows, Linux and macOS    
     # kdePackages.yakuake #Drop-down terminal emulator based on Konsole technologies
