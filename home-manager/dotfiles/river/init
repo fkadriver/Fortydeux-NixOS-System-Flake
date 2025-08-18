@@ -68,8 +68,8 @@ riverctl map normal Super+Shift Comma send-to-output previous
 riverctl map normal Super grave zoom
 
 # Voice dictation - Momentary
-riverctl map normal Super Return spawn "dictate-fw-ptt-auto 5"
-riverctl map normal Super+Shift Return spawn "dictate-wc-ptt-auto 5"
+riverctl map normal Super X spawn "dictate-fw-ptt-auto 5"
+riverctl map normal Super+Shift X spawn "dictate-wc-ptt-auto 5"
 
 # Voice dictation - Lock/Toggle
 riverctl map normal Super backslash spawn dictate-fw-ptt-toggle
@@ -142,7 +142,7 @@ riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
 # Super+Space to toggle float
-riverctl map normal Super Space toggle-float
+riverctl map normal Super Return toggle-float
 
 # Super+F to toggle fullscreen
 riverctl map normal Super F toggle-fullscreen

@@ -648,8 +648,8 @@
         // Mod+R { spawn "wofi"; }
 
         // Voice Dictation - Momentary
-        Mod+Return repeat=false { spawn "bash" "-c" "dictate-fw-ptt-auto"; }
-        Mod+Shift+Return repeat=false { spawn "bash" "-c" "dictate-wc-ptt-auto"; }
+        Mod+X repeat=false { spawn "bash" "-c" "dictate-fw-ptt-auto"; }
+        Mod+Shift+X repeat=false { spawn "bash" "-c" "dictate-wc-ptt-auto"; }
         
         // Voice Dictation - Locking/Toggle
         Mod+backslash repeat=false { spawn "bash" "-c" "dictate-fw-ptt-toggle"; }
@@ -867,8 +867,8 @@
         Mod+Shift+Equal { set-window-height "+10%"; }
 
         // Move the focused window between the floating and the tiling layout.
-        Mod+Space       { toggle-window-floating; }
-        Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+        Mod+Return       { toggle-window-floating; }
+        Mod+Shift+Return { switch-focus-between-floating-and-tiling; }
 
         // Toggle tabbed column display mode.
         // Windows in this column will appear as vertical tabs,

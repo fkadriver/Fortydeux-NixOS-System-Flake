@@ -202,6 +202,89 @@
     yazi = {
       enable = true;
       settings = {
+        opener = {
+          # Text files
+          edit = [
+            { run = "$EDITOR \"$@\""; block = true; for = "unix"; }
+            { run = "code \"$@\""; desc = "VS Code"; }
+            { run = "cursor \"$@\""; desc = "Cursor"; }
+          ];
+          
+          # Images
+          image = [
+            { run = "gwenview \"$@\""; desc = "Gwenview"; }
+            { run = "firefox \"$@\""; desc = "Firefox"; }
+          ];
+          
+          # Videos
+          video = [
+            { run = "mpv \"$@\""; desc = "MPV"; }
+            { run = "vlc \"$@\""; desc = "VLC"; }
+          ];
+          
+          # Audio
+          audio = [
+            { run = "mpv \"$@\""; desc = "MPV"; }
+            { run = "vlc \"$@\""; desc = "VLC"; }
+          ];
+          
+          # PDFs
+          pdf = [
+            { run = "okular \"$@\""; desc = "Okular"; }
+            { run = "firefox \"$@\""; desc = "Firefox"; }
+          ];
+          
+          # Documents
+          document = [
+            { run = "onlyoffice-desktopeditors \"$@\""; desc = "OnlyOffice"; }
+            { run = "libreoffice \"$@\""; desc = "LibreOffice"; }
+          ];
+          
+          # Archives
+          archive = [
+            { run = "ark \"$@\""; desc = "Ark"; }
+          ];
+          
+          # Web links
+          web = [
+            { run = "firefox \"$@\""; desc = "Firefox"; }
+          ];
+        };
+        
+        open = {
+          rules = [
+            { name = "*/"; use = [ "edit" "reveal" ]; }
+            { mime = "text/*"; use = [ "edit" "reveal" ]; }
+            { mime = "image/*"; use = [ "image" "reveal" ]; }
+            { mime = "video/*"; use = [ "video" "reveal" ]; }
+            { mime = "audio/*"; use = [ "audio" "reveal" ]; }
+            { mime = "application/pdf"; use = [ "pdf" "reveal" ]; }
+            { mime = "application/zip"; use = [ "archive" "reveal" ]; }
+            { mime = "application/x-tar"; use = [ "archive" "reveal" ]; }
+            { mime = "application/x-7z-compressed"; use = [ "archive" "reveal" ]; }
+            { mime = "application/x-rar-compressed"; use = [ "archive" "reveal" ]; }
+            { name = "*.nix"; use = [ "edit" "reveal" ]; }
+            { name = "*.py"; use = [ "edit" "reveal" ]; }
+            { name = "*.rs"; use = [ "edit" "reveal" ]; }
+            { name = "*.js"; use = [ "edit" "reveal" ]; }
+            { name = "*.ts"; use = [ "edit" "reveal" ]; }
+            { name = "*.md"; use = [ "edit" "reveal" ]; }
+            { name = "*.json"; use = [ "edit" "reveal" ]; }
+            { name = "*.yaml"; use = [ "edit" "reveal" ]; }
+            { name = "*.yml"; use = [ "edit" "reveal" ]; }
+            { name = "*.toml"; use = [ "edit" "reveal" ]; }
+            { name = "*.docx"; use = [ "document" "reveal" ]; }
+            { name = "*.doc"; use = [ "document" "reveal" ]; }
+            { name = "*.xlsx"; use = [ "document" "reveal" ]; }
+            { name = "*.xls"; use = [ "document" "reveal" ]; }
+            { name = "*.pptx"; use = [ "document" "reveal" ]; }
+            { name = "*.ppt"; use = [ "document" "reveal" ]; }
+            { name = "*.odt"; use = [ "document" "reveal" ]; }
+            { name = "*.ods"; use = [ "document" "reveal" ]; }
+            { name = "*.odp"; use = [ "document" "reveal" ]; }
+            { name = "*.rtf"; use = [ "document" "reveal" ]; }
+          ];
+        };
       };
     };
     zellij = {

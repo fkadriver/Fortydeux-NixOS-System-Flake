@@ -123,8 +123,8 @@ exec swayidle -w \
     bindsym $mod+grave exec "fuzzel"
     
     # Voice dictation - Momentary
-    bindsym --no-repeat $mod+Return exec "dictate-fw-ptt-auto 5"
-    bindsym --no-repeat $mod+Shift+Return exec "dictate-wc-ptt-auto 5"
+    bindsym --no-repeat $mod+x exec "dictate-fw-ptt-auto 5"
+    bindsym --no-repeat $mod+Shift+x exec "dictate-wc-ptt-auto 5"
 
     # Voice dictation - Toggle
     bindsym --no-repeat $mod+backslash exec "dictate-fw-ptt-toggle"
@@ -251,7 +251,7 @@ bindsym XF86AudioPrev exec playerctl previous
     bindsym $mod+Shift+f floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+Return focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent

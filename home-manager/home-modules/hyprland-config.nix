@@ -128,10 +128,6 @@
       "$activeBorderColor2" = "rgba(940b92cc)";
       "$inactiveBorderColor" = "rgba(00000099)";
       "$swaylock" = "swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 880033 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2";
-      "$swaybg-x" = "pkill mpvpaper & swaybg -m fill -i $HOME/.config/wallpapers/redwood-sunshine.webp";
-      "$mpvpaper-z" = "pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/Garden/";
-      "$mpvpaper-c" = "pkill swaybg & mpvpaper -p --slideshow 60 -o 'no-audio shuffle --speed=0.3' eDP-1 $HOME/.config/hypr/Wallpapers/Fun/CyberNeon/";
-      "$removeWallpapers" = "pkill swaybg || pkill mpvpaper";
       "$waybar" = "waybar -c $HOME/.config/hypr/waybar/config -s $HOME/.config/hypr/waybar/style.css";
       "$fuzzel" = "fuzzel -w 80 -b 181818ef -t ccccccff";
       "$wofi" = "wofi -S drun -GIm -w 3 -W 100% -H 96%";
@@ -153,7 +149,6 @@
         # Add this line to start KWallet daemon
         "kwalletd6" 
         "ked6"
-        # "$swaybg-x"
         "$hypridle"
       ];
       input = {
@@ -259,23 +254,35 @@
         "$mainMod, Q, killactive,"
         "$mainModSHIFT, E, exit,"
         "$mainMod, E, exec, nautilus"
-        "$mainMod, SPACE, togglefloating,"
+        "$mainMod, Return, togglefloating,"
         "$mainMod, D, exec, rofi -show drun -show-icons"
         "$mainMod, W, exec, pkill wofi || $wofi"
         "$mainMod, P, pseudo, "
         "$mainMod, L, exec, $hyprlock"
         "$mainMod, J, togglesplit, "
-        "$mainMod, F, fullscreen, 0"
-        "$mainMod, H, fullscreen, 1"
+        "$mainMod SHIFT, F, fullscreen, 0"
+        "$mainMod, F, fullscreen, 1"
         "CTRL, SPACE, exec, pkill fuzzel || fuzzel"
         "$mainMod, B, exec, pkill waybar || waybar"
         "$mainMod, K, exec, kate"
         "$mainMod, R, exec, hyprctl seterror disable"
-        "$mainMod SHIFT, X, exec, $swaybg-x"
-        "$mainMod SHIFT, Z, exec, $mpvpaper-z"
-        "$mainMod SHIFT, C, exec, $mpvpaper-c"
-        "$mainMod SHIFT, B, exec, $removeWallpapers"
         # "$mainMod, slash, exec, $show_binds"
+
+        # Voice dictation - Momentary
+        "$mainMod, X, exec, dictate-fw-ptt-auto 5"
+        "$mainMod SHIFT, X, exec, dictate-wc-ptt-auto 5"
+
+        # Voice dictation - Toggle
+        "$mainMod, backslash, exec, dictate-fw-ptt-toggle"
+        "$mainMod SHIFT, backslash, exec, dictate-wc-ptt-toggle"
+      
+        # Voice dictation - True push-to-talk (hold key)
+        # bind = $mainMod, backslash, exec, dictate-fw-ptt-start
+        # bindr = $mainMod, backslash, exec, dictate-fw-ptt-stop
+        # bind = $mainMod SHIFT, backslash, exec, dictate-wc-ptt-start  
+        # bindr = $mainMod SHIFT, backslash, exec, dictate-wc-ptt-stop
+
+
 
         # Volume
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -418,21 +425,6 @@
       # Screenshots
       bind = , PRINT, exec, grim -g "$(slurp)"
       
-      # Voice dictation - Momentary
-      bind = $mainMod, Return, exec, dictate-fw-ptt-auto 5
-      bind = $mainMod SHIFT, Return, exec, dictate-wc-ptt-auto 5
-
-      # Voice dictation - Toggle
-      bind = $mainMod, backslash, exec, dictate-fw-ptt-toggle  
-      bind = $mainMod SHIFT, backslash, exec, dictate-wc-ptt-toggle
-      
-      # Voice dictation - True push-to-talk (hold key)
-      # bind = $mainMod, backslash, exec, dictate-fw-ptt-start
-      # bindr = $mainMod, backslash, exec, dictate-fw-ptt-stop
-      # bind = $mainMod SHIFT, backslash, exec, dictate-wc-ptt-start  
-      # bindr = $mainMod SHIFT, backslash, exec, dictate-wc-ptt-stop
-
-
       # Begin Hyprscroller
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, movefocus, l
