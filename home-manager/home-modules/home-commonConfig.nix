@@ -6,6 +6,7 @@
     ./mime-config.nix
     ./whisper-faster.nix
     ./whisper-cpp.nix
+    ./whisper-plasma.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -58,7 +59,7 @@
     # }))
     # kdePackages.kdenlive # Open source video editor based on MLT and KDE frameworks
  #   logseq #Logseq electron desktop client
- #   libsForQt5.kdenlive #KdenLive Video Editor 
+    # libinput # Handles input devices in Wayland compositors
     lan-mouse #Wayland software KVM switch
     # media-downloader #Media-downloader desktop client
     # mediawriter #USB imaage writer
@@ -324,6 +325,12 @@
         enable = true;
         model = "small";      # Toggle model here
         language = "en";
+    };
+
+    dictation-plasma = {
+      enable = true;
+      enableFasterWhisper = true;
+      enableWhisperCpp = true; 
     };
   };
   

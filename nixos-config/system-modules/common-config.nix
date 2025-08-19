@@ -67,7 +67,7 @@
     isNormalUser = true;
     description = "Fortydeux";
     extraGroups =
-      [ "networkmanager" "wheel" "video" "audio" "jackaudio" "lp" "surface-control" ];
+      [ "networkmanager" "wheel" "video" "audio" "jackaudio" "lp" "surface-control" "uinput" ];
     packages = [
         # User packages may also go into Home.nix if using home-manager
       ];
