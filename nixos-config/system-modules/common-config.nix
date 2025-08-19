@@ -142,6 +142,7 @@
   hardware = {
     bluetooth.enable = true;
     graphics.enable = true;
+    uinput.enable = true; # Needed for ydotool
   };
 
   services = { 
