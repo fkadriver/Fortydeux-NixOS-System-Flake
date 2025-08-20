@@ -646,6 +646,7 @@
         // Mod+Return { spawn "walker"; }
         // Mod+T { spawn "foot"; }
         // Mod+R { spawn "wofi"; }
+        Mod+Escape { spawn "bash" "-c" "swaylock -f -c 000000"; }
 
         // Voice Dictation - Momentary
         Mod+X repeat=false { spawn "bash" "-c" "dictate-fw-ptt-auto"; }
@@ -895,7 +896,7 @@
         //
         // The allow-inhibiting=false property can be applied to other binds as well,
         // which ensures niri always processes them, even when an inhibitor is active.
-        Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+        Mod+Shift+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
         // The quit action will show a confirmation dialog to avoid accidental exits.
         Mod+Shift+E { quit; }
