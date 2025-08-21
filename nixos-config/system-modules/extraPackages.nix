@@ -46,7 +46,7 @@ pkgs,
     kitty-themes # Themes for the kitty terminal emulator
     krita # A free and open source painting application
     lapce # Lightning-fast and Powerful Code Editor written in Rust
-    libreoffice-qt # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
+    libreoffice-qt6-fresh # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
     # librewolf # A fork of Firefox, focused on privacy, security and freedom
     kdePackages.kate # Plasma text editor
     #   libsForQt5.kdeconnect-kde #KDE Connect provides several features to integrate your phone and your computer
