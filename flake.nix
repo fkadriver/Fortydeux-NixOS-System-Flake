@@ -4,10 +4,7 @@
 # Flake.nix
 
   inputs = {  
-    anyrun.url = "github:anyrun-org/anyrun";
-    stylix.url = "https://flakehub.com/f/danth/stylix/0.1";
-    # stylix.url = "github:danth/stylix";
-    niri.url = "github:YaLTeR/niri";
+    # Determinate, Nix, and HM
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2505"; # 25.05 from Flakehub
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0"; # Unstable from Flakehub
@@ -17,12 +14,15 @@
   	# home-manager.url = "github:nix-community/home-manager";
   	home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    #Cosmic
-    # nixos-cosmic = {
-    #   url = "github:lilyinstarlight/nixos-cosmic";
-    #   # inputs.nixpkgs.follows = "nixpkgs";
-    # };    
-    #Hyprland+Plugins
+    # Other Projects
+    # Anyrun launcher
+    anyrun.url = "github:anyrun-org/anyrun";
+    # Stylix theming
+    stylix.url = "https://flakehub.com/f/danth/stylix/0.1";
+    # stylix.url = "github:danth/stylix";
+    # Niri compositor
+    niri.url = "github:YaLTeR/niri";
+    # Hyprland compositor + Plugins
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -38,8 +38,6 @@
     };  
     #MusNix
     musnix.url = "github:musnix/musnix";
-    #Transcribee
-    transcribee.url = "github:bugbakery/transcribee";
   };
   
   outputs = { self, nixpkgs, home-manager, nixos-hardware, niri, stylix, determinate, hyprland, hyprgrass, hyprland-plugins, musnix, ... }@inputs: 
@@ -94,6 +92,7 @@
 
       ##--Home-Manager Configuration--##     
       homeConfigurations = {
+        #--Archerfish host--#
         "fortydeux@archerfish-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
@@ -101,6 +100,7 @@
             ./home-manager/hosts/archerfish-home.nix
           ];
         }; 
+         #--Killifish host--#
         "fortydeux@killifish-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
@@ -108,6 +108,7 @@
             ./home-manager/hosts/killifish-home.nix
           ];
         }; 
+         #--Pufferfish host--#
         "fortydeux@pufferfish-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
@@ -115,6 +116,7 @@
             ./home-manager/hosts/pufferfish-home.nix
           ];
         }; 
+         #--Blackfin host--#
         "fortydeux@blackfin-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
@@ -122,6 +124,7 @@
             ./home-manager/hosts/blackfin-home.nix
           ];
         };
+         #--Blacktetra host--#
         "fortydeux@blacktetra-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
