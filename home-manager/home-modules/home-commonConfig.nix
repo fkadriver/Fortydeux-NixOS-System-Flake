@@ -249,8 +249,8 @@
           
           # Documents
           document = [
-            { run = "onlyoffice-desktopeditors \"$@\""; desc = "OnlyOffice"; }
             { run = "libreoffice \"$@\""; desc = "LibreOffice"; }
+            { run = "onlyoffice-desktopeditors \"$@\""; desc = "OnlyOffice"; }
           ];
           
           # Archives
@@ -296,6 +296,7 @@
             { name = "*.ods"; use = [ "document" "reveal" ]; }
             { name = "*.odp"; use = [ "document" "reveal" ]; }
             { name = "*.rtf"; use = [ "document" "reveal" ]; }
+            { name = "*"; use = [ "edit" "reveal" ]; }
           ];
         };
       };
