@@ -9,11 +9,8 @@
     ../home-modules/dotfiles.nix
     ../home-modules/niri-config.nix
     ../home-modules/theming.nix 
-    # ../home-modules/emacs-support.nix 
-    # ../home-modules/ags.nix
     ../home-modules/hyprland-config.nix
     ../home-modules/hyprland-dualingOfficeMonitors.nix
-    # ../home-modules/misc-utils.nix
   ];
 
 }
