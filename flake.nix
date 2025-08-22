@@ -40,7 +40,7 @@
     musnix.url = "github:musnix/musnix";
   };
   
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, niri, stylix, determinate, hyprland, hyprgrass, hyprland-plugins, musnix, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";

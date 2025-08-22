@@ -177,17 +177,28 @@
         ffmpegthumbnailer
         sxiv
         nsxiv
-        tabbed
         file
         zathura
         tree
+        # Essential dependencies for preview-tui plugin
+        bat
+        ueberzug
+        chafa
+        viu
+        catimg
+        timg
+        glow
+        lowdown
+        w3m
+        lynx
+        elinks
+        pistol
       ];
       plugins = {
         mappings = {
           #f = "finder";
           #o = "fzopen";
           n = "nuke";
-          v = "preview-tabbed";
           p = "preview-tui";
           #s = "-!printf $PWD/$nnn|wl-copy*";
           #d = "";

@@ -94,6 +94,8 @@
     	source = ../dotfiles/i3bar-river;
     	recursive = true;
     };
+
+		# i3status-rust is now wirtten by config above
     # ".config/i3status-rust" = {
     # 	source = ../dotfiles/i3status-rust;
     # 	recursive = true;
@@ -202,7 +204,7 @@
     ".config/wallpapers" = {
     	source = ../dotfiles/wallpapers;
     	recursive = true;
-    };  
+    };
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
