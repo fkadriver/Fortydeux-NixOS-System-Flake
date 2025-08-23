@@ -4,17 +4,17 @@
 
 ## Disclaimer and intention:
 
-This is a work-in-progress personal NixOS Flake using Plasma and Hyprland for desktop/wm environments (and more recent additions of River, Sway, Wayfire, and Niri, which have usable, but not elaborate, configs).
+This is a work-in-progress personal NixOS Flake featuring multiple desktop environments and Wayland compositors. The system includes KDE Plasma, COSMIC Desktop, and five compositors: Hyprland, Niri, Sway, River, and Wayfire - each with customized configurations that attempt to show off each compositor's strengths without customizing them too drastically.
 
 As such, it is mostly intended for personal use, but made public for the sake of sharing and easy reference. 
 
 Feel free to use my setup or any parts of it that you find useful. 
 
-I am still very much learning Nix along with many other things, so please leave feedback for any bugs, better practices, corrections, or appreciation as indicated. 
+I am still very much learning Nix along with many other things, so please leave feedback for any bugs, better practices, corrections, or appreciation, as indicated. 
 
 ...that being said, please don't expect speedy updates or support, as this is just a personal/hobby endeavor.
 
-It is also possible that I may leave this flake in a broken state while I'm working on things, so try it at your own risk.
+It is also possible that I may leave this flake in a slightly broken state while I'm working on things (although generally not for long, as I daily drive it), so try it at your own risk.
 
 ![Hyprland Screenshot](https://github.com/WhatstheUse/Fortydeux-NixOS-System-Flake/blob/main/media/fortyflake-hyprland-screenshot.png)
 
@@ -27,6 +27,9 @@ Most major compositor configurations (Hyprland, River, Sway, Wayfire, Niri) are 
 
 ### **Hyprland Hyprscroller Plugin:**
 My Hyprland configuration uses the Hyprscroller plugin by default, which provides a PaperWM-like scrolling behavior that is **NOT** Hyprland's default tiling behavior. If you prefer traditional Hyprland tiling, you should comment out the Hyprscroller plugin in `hyprland-config.nix` and may want to reassign some keybindings accordingly.
+
+### **Multi-Host Architecture:**
+This flake supports five different host configurations, each tailored for specific hardware or use cases. The username is abstracted to a single variable in `flake.nix`, making it easy to deploy across multiple machines while maintaining consistent configurations.
 
 ## Host Configurations
 
