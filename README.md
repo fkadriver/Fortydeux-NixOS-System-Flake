@@ -82,6 +82,8 @@ When you change the username in `flake.nix`, you create a new user account witho
    ```
 3. Then build home-manager configuration
 
+**Note: If your-new-username in `flake.nix` is the same as your current username that you set while installing NixOS, you should be fine, since the user already exists on your system - The issue comes from trying to log in to a user account that doesn't have a password already set, but now appears as the only user on the system**
+
 **Option 2: Set password in configuration (Advanced)**
 If you want to set the password in the configuration itself, you can add a `hashedPassword` to the user configuration in `nixos-config/system-modules/common-config.nix`:
 
@@ -126,9 +128,8 @@ For all compositors, you'll find the configurations within `home-manager/home-mo
 ### Cross-Compositor Keybindings (Mostly Consistent):
 
 **Application Launchers:**
-- **CTRL+SPACE**: Fuzzel app launcher (Hyprland, Sway, River, Niri)
-- **ALT+SPACE**: Anyrun launcher (Hyprland, Sway, Niri)
-- **SUPER+W**: Rofi drun launcher (River)
+- **CTRL+SPACE**: Fuzzel app launcher (Hyprland, Sway, River, Niri, Wayfire)
+- **ALT+SPACE**: Anyrun launcher (Hyprland, Sway, Niri, Wayfire)
 
 **Terminal & System:**
 - **SUPER+S**: Launch terminal (kitty/foot) (Hyprland, Sway, River, Niri)
