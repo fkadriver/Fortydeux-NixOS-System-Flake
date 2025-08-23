@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username ? "fortydeux", ... }:
 
 let
   cfg = config.programs.wayfire;
@@ -68,7 +68,7 @@ in
 
         [autostart]
         autostart0 = pcloud
-        autostart1 = /home/fortydeux/.config/scripts/fix-resolution.sh
+        autostart1 = /home/${username}/.config/scripts/fix-resolution.sh
         autostart_wf_shell = true
         background = wf-background
         gamma = wlsunset
@@ -79,7 +79,7 @@ in
 
         [background]
         cycle_timeout = 150
-        ${if cfg.enableStylix then "image = ${config.stylix.image}" else "# image = /home/fortydeux/.config/wayfire/wallpapers/balloon-wp.jpg"}
+        ${if cfg.enableStylix then "image = ${config.stylix.image}" else "# image = /home/${username}/.config/wayfire/wallpapers/balloon-wp.jpg"}
         preserve_aspect = false
         randomize = false
         fill_mode = fill_and_crop
@@ -677,7 +677,7 @@ in
         layer = top
         logout_command = wayland-logout
         menu_fuzzy_search = true
-        menu_icon = /home/fortydeux/.config/logos/nix-snowflake-colours.svg
+        menu_icon = /home/${username}/.config/logos/nix-snowflake-colours.svg
         menu_logout_command = wlogout
         menu_min_content_height = 500
         menu_min_content_width = 500

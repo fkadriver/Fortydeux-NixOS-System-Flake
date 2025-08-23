@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, username, ... }:
 
 { # Networking.nix
 
@@ -27,9 +27,9 @@
   # Services - Syncthing
   services.syncthing = {
       enable = true;
-      user = "fortydeux";
-      dataDir = "/home/fortydeux";    # Default folder for new synced folders
-      configDir = "/home/fortydeux/.config/syncthing";   # Folder for Syncthing's settings and keys
+      user = "${username}";
+      dataDir = "/home/${username}";    # Default folder for new synced folders
+      configDir = "/home/${username}/.config/syncthing";   # Folder for Syncthing's settings and keys
   };
 
 }

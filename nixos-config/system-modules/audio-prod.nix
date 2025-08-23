@@ -1,5 +1,5 @@
 # audio-prod.nix - Professional Audio Configuration with PipeWire + JACK compatibility
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, inputs, username, ... }:
 
 {
   imports = [
@@ -179,7 +179,7 @@
   };
 
   # Audio group membership and limits
-  users.users.fortydeux.extraGroups = [ "audio" "jackaudio" ];
+  users.users.${username}.extraGroups = [ "audio" "jackaudio" ];
   
   security.pam.loginLimits = [
     { domain = "@audio"; item = "memlock"; type = "-"; value = "unlimited"; }

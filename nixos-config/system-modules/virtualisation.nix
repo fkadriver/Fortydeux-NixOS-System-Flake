@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, username, ... }:
 
 { # Virtualization.nix
 
@@ -14,7 +14,7 @@
   #   setSocketVariable = true;
   # }; 
   # Podman config
-  users.users.fortydeux = {
+  users.users.${username} = {
     extraGroups =
       [ "libvirtd" ];
   };

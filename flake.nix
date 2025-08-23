@@ -42,6 +42,7 @@
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs: 
     let
+      username = "fortydeux";  # Change this to your username
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -53,7 +54,7 @@
     	  	modules = [ 
     	  	  ./nixos-config/hosts/archerfish/configuration.nix 
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
       	};
         #--Killifish host--#
       	killifish-nixos = lib.nixosSystem {
@@ -61,7 +62,7 @@
     	  	modules = [ 
     	  	  ./nixos-config/hosts/killifish/configuration.nix 
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
       	};
         #--Pufferfish host--#
       	pufferfish-nixos = lib.nixosSystem {
@@ -69,7 +70,7 @@
     	  	modules = [ 
     	  	  ./nixos-config/hosts/pufferfish/configuration.nix 
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
       	};
         #--Blackfin host--#
       	blackfin-nixos = lib.nixosSystem {
@@ -77,7 +78,7 @@
     	  	modules = [ 
     	  	  ./nixos-config/hosts/blackfin/configuration.nix 
             ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
       	};
         #--Blacktetra host--#
         blacktetra-nixos = lib.nixosSystem {
@@ -85,7 +86,7 @@
           modules = [ 
             ./nixos-config/hosts/blacktetra/configuration.nix 
           ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
         }; 
 
       };
@@ -93,41 +94,41 @@
       ##--Home-Manager Configuration--##     
       homeConfigurations = {
         #--Archerfish host--#
-        "fortydeux@archerfish-nixos" = home-manager.lib.homeManagerConfiguration {
+        "${username}@archerfish-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs username; };
     	    modules = [
             ./home-manager/hosts/archerfish-home.nix
           ];
         }; 
          #--Killifish host--#
-        "fortydeux@killifish-nixos" = home-manager.lib.homeManagerConfiguration {
+        "${username}@killifish-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs username; };
     	    modules = [
             ./home-manager/hosts/killifish-home.nix
           ];
         }; 
          #--Pufferfish host--#
-        "fortydeux@pufferfish-nixos" = home-manager.lib.homeManagerConfiguration {
+        "${username}@pufferfish-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs username; };
     	    modules = [
             ./home-manager/hosts/pufferfish-home.nix
           ];
         }; 
          #--Blackfin host--#
-        "fortydeux@blackfin-nixos" = home-manager.lib.homeManagerConfiguration {
+        "${username}@blackfin-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs username; };
     	    modules = [
             ./home-manager/hosts/blackfin-home.nix
           ];
         };
          #--Blacktetra host--#
-        "fortydeux@blacktetra-nixos" = home-manager.lib.homeManagerConfiguration {
+        "${username}@blacktetra-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit inputs username; };
           modules = [
             ./home-manager/hosts/blacktetra-home.nix
           ];

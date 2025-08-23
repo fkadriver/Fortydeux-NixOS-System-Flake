@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, username, ... }:
 
 { # Common-config.nix
 
@@ -62,10 +62,10 @@
 
   ### Users
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.fortydeux = {
+  users.users.${username} = {
     shell = pkgs.fish;
     isNormalUser = true;
-    description = "Fortydeux";
+    description = username;
     extraGroups =
       [ "networkmanager" "wheel" "video" "audio" "jackaudio" "lp" "surface-control" "uinput" ];
     packages = [
