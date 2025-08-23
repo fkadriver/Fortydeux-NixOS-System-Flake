@@ -325,7 +325,7 @@
   };
   
   home.sessionVariables = {
-    # NNN_OPENER = "/home/fortydeux/scripts/file-ops/linkhandler.sh";
+    # NNN_OPENER = "/home/${user}/scripts/file-ops/linkhandler.sh";
     # NNN_FCOLORS = "$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER";
     NNN_TRASH = 1;
     NNN_FIFO = "/tmp/nnn.fifo";
@@ -343,7 +343,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/fortydeux/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/${user}/etc/profile.d/hm-session-vars.sh
   #
   
   # Let Home Manager install and manage itself.

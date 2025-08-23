@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, user, ... }: 
 
 { # Display-manager.nix
 
@@ -34,7 +34,7 @@
  #    settings = rec {
  #      initial_session = {
  #        command = "${pkgs.hyprland}/bin/Hyprland";
- #        user = "fortydeux";
+ #        user = ${user};
  #      };
  #      default_session = initial_session;
  #    };

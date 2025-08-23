@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username ? "fortydeux", ... }:
+{ config, lib, pkgs, username, ... }:
 
 let
   cfg = config.programs.wayfire;

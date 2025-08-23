@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ config, pkgs, inputs, username, ... }:
+{ config, lib, pkgs, inputs, username, ... }:
 
 { # Common-config.nix
 
@@ -65,7 +65,7 @@
   users.users.${username} = {
     shell = pkgs.fish;
     isNormalUser = true;
-    description = username;
+    description = "${builtins.substring 0 1 (lib.toUpper username)}${builtins.substring 1 (builtins.stringLength username) username}";
     extraGroups =
       [ "networkmanager" "wheel" "video" "audio" "jackaudio" "lp" "surface-control" "uinput" ];
     packages = [

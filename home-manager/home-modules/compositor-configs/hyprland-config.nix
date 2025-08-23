@@ -12,6 +12,8 @@
   imports =
     [
       ./waybar-config.nix
+      ./hypridle-config.nix
+      # ./hyprlock-config.nix
     ];
   services.hyprpaper = {
     enable = true;
@@ -424,9 +426,6 @@
 
       # Screenshots
       bind = , PRINT, exec, grim -g "$(slurp)"
-      
-      # Hide Xwayland Video Bridge window
-      windowrule = title="^Wayland to X Recording bridge - Xwayland Video Bridge$", float, size 1 1, move 9999 9999, noanim
       
       # Begin Hyprscroller
       # Move focus with mainMod + arrow keys
