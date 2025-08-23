@@ -572,6 +572,16 @@
         // open-fullscreen false
     }
 
+    // Hide Xwayland Video Bridge window
+    window-rule {
+        match title="^Wayland to X Recording bridge - Xwayland Video Bridge$"
+        open-floating true
+        min-width 1
+        max-width 1
+        min-height 1
+        max-height 1
+    }
+
     window-rule {
         match is-active=false
         // opacity 0.95

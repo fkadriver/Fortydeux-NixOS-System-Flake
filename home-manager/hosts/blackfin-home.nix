@@ -10,7 +10,7 @@
     ../home-modules/wm-homeController.nix
     # Task-specific
     ../home-modules/whisper-controller.nix
-    ../home-modules/screen-recording.nix
+    # ../home-modules/screen-recording.nix
     # Device-specific
     ../home-modules/compositor-configs/hyprland-dualingStudioMonitors.nix
   ];

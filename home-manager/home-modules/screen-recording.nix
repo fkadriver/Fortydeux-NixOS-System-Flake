@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  # Screen recording configuration
   programs = {
     obs-studio = {
       enable = true;
@@ -14,10 +15,8 @@
     };
   };
 
-  # Additional packages for screen recording
+  Additional packages for screen recording
   home.packages = with pkgs; [
     simplescreenrecorder   # Alternative to OBS for basic recording
   ];
-
-
 }
