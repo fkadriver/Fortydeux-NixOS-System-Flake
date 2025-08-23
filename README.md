@@ -128,36 +128,34 @@ For all compositors, you'll find the configurations within `home-manager/home-mo
 ### Cross-Compositor Keybindings (Mostly Consistent):
 
 **Application Launchers:**
-- **CTRL+SPACE**: Fuzzel app launcher (Hyprland, Sway, River, Niri, Wayfire)
-- **ALT+SPACE**: Anyrun launcher (Hyprland, Sway, Niri, Wayfire)
+- **CTRL+SPACE**: Fuzzel app launcher
+- **ALT+SPACE**: Anyrun launcher
 
 **Terminal & System:**
-- **SUPER+S**: Launch terminal (kitty/foot) (Hyprland, Sway, River, Niri)
-- **SUPER+Q**: Close window (Hyprland, Sway, River, Niri)
-- **SUPER+SHIFT+E**: Exit compositor (Sway, River)
-- **SUPER+M**: Exit Hyprland
+- **SUPER+S**: Launch termina
+- **SUPER+Q**: Close window
+- **SUPER+SHIFT+E**: Exit compositor
 
 **Window Management:**
-- **SUPER+F**: Toggle fullscreen (Hyprland, Sway, River, Niri)
-- **SUPER+RETURN**: Toggle float (Sway, River, Niri)
+- **SUPER+F**: Toggle maximize 
+- **SUPER+SHIFT+F**: Toggle fullscreen 
+- **SUPER+RETURN**: Toggle float 
 - **SUPER+V**: Toggle float (Hyprland)
 
 **Navigation (Arrow Keys):**
-- **SUPER+Arrow Keys**: Focus windows/columns (Hyprland, Sway, River, Niri)
-- **SUPER+SHIFT+Arrow Keys**: Move windows/columns (Hyprland, Sway, River, Niri)
-- **SUPER+J/K**: Focus windows (Sway, River, Niri)
-- **SUPER+SHIFT+J/K**: Move windows (Sway, River, Niri)
+- **SUPER+Arrow Keys**: Focus windows/columns
+- **SUPER+SHIFT+Arrow Keys**: Move windows/columns within workspace
+- **SUPER+CRTL+Arrow keys**: Move windows/columns to other workspace
 
 **Workspace/Column Management:**
-- **SUPER+1-9**: Switch to workspace/column (Hyprland, Sway, River, Niri)
-- **SUPER+SHIFT+1-9**: Move window to workspace/column (Hyprland, Sway)
-- **SUPER+CTRL+Left/Right**: Switch workspaces (Sway)
-- **SUPER+Home/End**: Focus first/last column (Hyprland, Niri)
+- **SUPER+1-9**: Switch to numbered workspace
+- **SUPER+SHIFT+1-9**: Move window to workspace/column
+- **SUPER+CTRL+Left/Right**: Switch workspaces
 
 **Special Features:**
 - **SUPER+SHIFT+Slash**: Show hotkey overlay (Niri)
-- **SUPER+O**: Toggle overview (Niri)
-- **SUPER+Grave**: Toggle overview/switch windows (Niri)
+- **SUPER/ALT+Tab**: Application switching
+- **SUPER+Grave**: Overview (Niri, Hyprscroller)
 
 **Voice Dictation (Available in most compositors):**
 - **SUPER+X**: Faster-Whisper dictation (momentary)
