@@ -49,7 +49,7 @@ configure_laptop_display() {
         fi
         
         echo "  Detected resolution: ${resolution_width}px, setting scale to ${scale}x"
-        wlr-randr --output eDP-1 --mode auto --pos 0,0 --scale $scale
+        wlr-randr --output eDP-1 --pos 0,0 --scale $scale
     else
         echo "  eDP-1 not detected or no current mode"
     fi
