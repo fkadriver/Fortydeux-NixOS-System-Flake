@@ -10,10 +10,18 @@
     enable = true;
     sddm.enable = true;
     sddm.wayland.enable = true;
+    
+    # Configure SDDM cursor theme to match Stylix settings
+    sddm = { 
+      autoNumlock = true;
+      settings = {
+        Theme = {
+          CursorTheme = "phinger-cursors-light";
+          CursorSize = "32";
+        };
+      };
+    };
   };
-
-  # Enable NumLock at login:
-  services.displayManager.sddm.autoNumlock = true;
 
    # Greetd - enable if disabling other login managers 
  #  services.greetd = {

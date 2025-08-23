@@ -2,11 +2,7 @@
 
 {
   imports = [
-    ./wm-homeConfig.nix
     ./mime-config.nix
-    ./whisper-faster.nix
-    ./whisper-cpp.nix
-    ./whisper-plasma.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -325,24 +321,6 @@
           theme = "default";
           timeout = 0;
         };
-    };
-    dictation-faster = {
-        enable = true;
-        model = "tiny";       # Toggle model here
-        language = "en";
-        device = "cpu";       # set "cuda" if you have NVIDIA + CUDA set up
-    };
-
-    dictation-whispercpp = {
-        enable = true;
-        model = "small";      # Toggle model here
-        language = "en";
-    };
-
-    dictation-plasma = {
-      enable = true;
-      enableFasterWhisper = true;
-      enableWhisperCpp = true; 
     };
   };
   

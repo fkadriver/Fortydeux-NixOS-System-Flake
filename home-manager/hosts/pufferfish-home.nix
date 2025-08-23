@@ -4,12 +4,13 @@
 
   imports = [
     ../home-modules/home-commonConfig.nix
-    ../home-modules/screen-recording.nix
     ../home-modules/sh-env.nix	
-    ../home-modules/dotfiles.nix
-    ../home-modules/niri-config.nix
+    ../home-modules/dotfiles-controller.nix
     ../home-modules/theming.nix 
-    ../home-modules/hyprland-config.nix
+    # ../home-modules/wm-homeController.nix
+    # Task-specific
+    ../home-modules/whisper-controller.nix
+    ../home-modules/screen-recording.nix
   ];
 
 }
