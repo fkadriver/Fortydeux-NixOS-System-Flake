@@ -175,10 +175,10 @@ Each compositor has its own unique features and capabilities. Check the respecti
 ### Important note about configuration editing within this Flake:
 - Most major compositor configurations are now managed as Nix modules in `home-manager/home-modules/compositor-configs/`
 - To edit these configurations, you need to modify the Nix files within the flake, then run "home-manager switch" to write the updated files to $HOME
-- You may even need to reboot or CTRL+M to quit Hyprland and log back in to see your changes
-- This is a MUCH more cumbersome workflow, especially for Hyprland where normally saving hyprland.conf would trigger an automatic reload of the config file, giving immediate feedback of changes
-- Smaller utilities (dunst, mako, ranger, etc.) are still managed as dotfiles in `home-manager/home-modules/dotfiles/` - check `dotfiles-controller.nix` to see which configurations are managed as Nix modules vs dotfiles
+- You may even need to reboot or SUPER+SHIFT+E to quit and log back in to see your changes
+- This is a MUCH more cumbersome workflow, especially for compositors that support hot-reloads where normally saving the config file would trigger an automatic reload of the config, giving immediate feedback of changes - when doing heavy modifications, it may make sense to comment out the config module or home.file write lines, and edit the configs directly in $HOME/.config while making your heavy changes, then move back to home.file write or Nix config module when more stable
 - Therefore, if you are making a lot of changes, you may want to stop Home-manager from managing these files (comment out and run switch command), and go back to editing them directly within your $HOME directory until most of your edits are done, at which time you may choose to copy them back into the appropriate Nix modules and resume home-manager's management of them
+- Smaller utilities (dunst, mako, ranger, etc.) are still managed as dotfiles in `home-manager/home-modules/dotfiles/` - check `dotfiles-controller.nix` to see which configurations are managed as Nix modules vs dotfiles
 
 Please contact me with any questions/comments. Thanks! 
 
