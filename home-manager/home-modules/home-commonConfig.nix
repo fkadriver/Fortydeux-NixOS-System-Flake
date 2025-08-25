@@ -42,6 +42,7 @@
     # fuzzel # Wayland launcher
     gh #Github CLI tool 
     ghostty #Fast, native, feature-rich terminal emulator pushing modern features
+    kdePackages.ghostwriter # Text editor for Markdown
     # helix #Post modern modal text editor
     impala #TUI for managing Wifi
     jellyfin-tui #TUI for Jellyfin music
@@ -70,6 +71,7 @@
     poppler_utils #Poppler is a PDF rendering library based on the xpdf-3.0 code base. In addition it provides a number of tools that can be installed separately.    
     reaper #Reaper DAW
     rustscan #Nmap scanner written in Rust
+    satty #Modern Screenshot Annotation tool
     # shotcut #Open-source cross-platform video editor
     signal-desktop-bin #Signal electron desktop client
     # simplex-chat-desktop #SimpleX Chat Desktop Client
@@ -303,26 +305,51 @@
         # theme = "dracula";
       };
     };
-  };
-
-  services = {
-    walker = {
+    satty = {
       enable = true;
-      settings =  {
-          app_launch_prefix = "";
-          as_window = false;
-          close_when_open = false;
-          disable_click_to_close = false;
-          force_keyboard_focus = false;
-          hotreload_theme = false;
-          locale = "";
-          monitor = "";
-          terminal_title_flag = "";
-          theme = "default";
-          timeout = 0;
+      settings = {
+        general = {
+          fullscreen = true;
+          corner-roundness = 12;
+          initial-tool = "brush";
+          output-filename = "/home/${username}/Pictures/satty-%Y-%m-%d_%H-%M-%S.png";
         };
+        color-palette = {
+          palette = [
+            "#ff6b6b"  # Red
+            "#4ecdc4"  # Teal
+            "#45b7d1"  # Blue
+            "#96ceb4"  # Green
+            "#feca57"  # Yellow
+            "#ff9ff3"  # Pink
+            "#54a0ff"  # Light Blue
+            "#5f27cd"  # Purple
+            "#00d2d3"  # Cyan
+            "#ff9f43"  # Orange
+          ];
+        };
+      };
     };
   };
+
+  # services = {
+  #   walker = {
+  #     enable = true;
+  #     settings =  {
+  #         app_launch_prefix = "";
+  #         as_window = false;
+  #         close_when_open = false;
+  #         disable_click_to_close = false;
+  #         force_keyboard_focus = false;
+  #         hotreload_theme = false;
+  #         locale = "";
+  #         monitor = "";
+  #         terminal_title_flag = "";
+  #         theme = "default";
+  #         timeout = 0;
+  #       };
+  #   };
+  # };
   
   home.sessionVariables = {
     # NNN_OPENER = "/home/${user}/scripts/file-ops/linkhandler.sh";

@@ -273,6 +273,24 @@ in
       bindsym XF86AudioNext exec playerctl next
       bindsym XF86AudioPrev exec playerctl previous
 
+      # Screenshots with Satty
+      set $satty satty -f - --initial-tool=arrow --copy-command=wl-copy --actions-on-escape="save-to-clipboard,exit" --brush-smooth-history-size=5 --disable-notifications --output-filename /home/${config.home.username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
+      
+      # Quick screenshot bindings (consistent with other compositors)
+      bindsym Print exec grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | $satty
+      bindsym $mod+Print exec grim -t ppm - | $satty
+      
+      # Advanced screenshot mode
+      set $printscreen_mode 'printscreen (r:region, f:full, w:window)'
+      mode $printscreen_mode {
+          bindsym r exec swaymsg 'mode "default"' && grim -t ppm -g "$(slurp -d)" - | $satty
+          bindsym f exec swaymsg 'mode "default"' && grim -t ppm - | $satty
+          bindsym w exec swaymsg 'mode "default"' && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | grim -t ppm -g - - | $satty
+
+          bindsym Return mode "default"
+          bindsym Escape mode "default"
+      }
+      bindsym $mod+Shift+Print mode $printscreen_mode
           
       #
       # Layout stuff:

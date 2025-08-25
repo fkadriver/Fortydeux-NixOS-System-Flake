@@ -424,8 +424,10 @@
       # env=QT_QPA_PLATFORMTHEME,qt6ct
       env = XDG_MENU_PREFIX,plasma-
 
-      # Screenshots
-      bind = , PRINT, exec, grim -g "$(slurp)"
+      # Screenshots with Satty
+      bind = , PRINT, exec, grim -g "$(slurp -o -r -c '##ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
+      bind = $mainMod, PRINT, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
+      bind = $mainMod SHIFT, PRINT, exec, grim -g "$(slurp -o -r -c '##ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
       
       # Begin Hyprscroller
       # Move focus with mainMod + arrow keys

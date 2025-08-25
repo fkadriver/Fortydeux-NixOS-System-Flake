@@ -132,7 +132,7 @@ For all compositors, you'll find the configurations within `home-manager/home-mo
 - **ALT+SPACE**: Anyrun launcher
 
 **Terminal & System:**
-- **SUPER+S**: Launch termina
+- **SUPER+S**: Launch terminal
 - **SUPER+Q**: Close window
 - **SUPER+SHIFT+E**: Exit compositor
 
@@ -140,20 +140,19 @@ For all compositors, you'll find the configurations within `home-manager/home-mo
 - **SUPER+F**: Toggle maximize 
 - **SUPER+SHIFT+F**: Toggle fullscreen 
 - **SUPER+RETURN**: Toggle float 
-- **SUPER+V**: Toggle float (Hyprland)
 
 **Navigation (Arrow Keys):**
-- **SUPER+Arrow Keys**: Focus windows/columns
+- **SUPER+Arrow Keys**: Change focus for windows/columns
 - **SUPER+SHIFT+Arrow Keys**: Move windows/columns within workspace
 - **SUPER+CRTL+Arrow keys**: Move windows/columns to other workspace
 
 **Workspace/Column Management:**
 - **SUPER+1-9**: Switch to numbered workspace
 - **SUPER+SHIFT+1-9**: Move window to workspace/column
-- **SUPER+CTRL+Left/Right**: Switch workspaces
+- **SUPER+CTRL+Left/Right/Up/Down**: Switch workspaces
 
 **Special Features:**
-- **SUPER+SHIFT+Slash**: Show hotkey overlay (Niri)
+- **SUPER+SHIFT+Slash**: Show keybinds overlay (Niri)
 - **SUPER/ALT+Tab**: Application switching
 - **SUPER+Grave**: Overview (Niri, Hyprscroller)
 
@@ -180,9 +179,12 @@ Each compositor has its own unique features and capabilities. Check the respecti
 - Therefore, if you are making a lot of changes, you may want to stop Home-manager from managing these files (comment out and run switch command), and go back to editing them directly within your $HOME directory until most of your edits are done, at which time you may choose to copy them back into the appropriate Nix modules and resume home-manager's management of them
 - Smaller utilities (dunst, mako, ranger, etc.) are still managed as dotfiles in `home-manager/home-modules/dotfiles/` - check `dotfiles-controller.nix` to see which configurations are managed as Nix modules vs dotfiles
 
+### Theming notes
+- Most theming is applied via Stylix, and can be managed via the system and home-manager theming modules, `nixos-modules/system-theme.nix` and `home-modules/theming.nix`, respectively.
+
 Please contact me with any questions/comments. Thanks! 
 
-Also many **thanks** to all those I've learned from and whose projects I am using as full packages, or just bits of code that I've learned or borrowed.
+Also many **thanks** to all those I've learned from and whose projects I am using as full packages, or just bits of code from which I've learned or borrowed.
 
 You all have contributed to my learning journey, and building the most fun and productive desktop/wm environment (for my own needs and preferences) in which I've ever had the pleasure to work.
 
@@ -192,4 +194,4 @@ A totally non-comprehensive list:
 - All the Linux Unplugged/Jupiter Broadcasting guys (and community), who got me started on both NixOS and Hyprland - both decisions I've questioned at times, but ultimately find myself better off
 - LibrePhoenix - for some of the best NixOS tutorials for a someone like me... as a nurse by trade rather than a developer, I needed a different approach
 - ChatGPT - ...um, yeah. It turns out as a nurse, you don't find many friends who are into Linux, Nix, and Hyprland... so having 'someone' to bug with questions repeatedly at all hours, short of a real-world mentor, is pretty invaluable.
-- Too many others to mention on github, matrix, etc, from whom I've learned some valuable Nix and configuration tips and tricks. 
+- Too many others to mention from github, matrix, etc, from whom I've learned some valuable Nix and configuration tips and tricks. 

@@ -125,9 +125,11 @@ in
         command_exit = pkill -KILL wayfire
         binding_mute = KEY_MUTE
         binding_screenshot = KEY_PRINT
-        command_screenshot = grim $(date '+%F_%T').webp
-        binding_screenshot_interactive = <shift> KEY_PRINT
-        command_screenshot_interactive = slurp | grim -g - $(date '+%F_%T').webp
+        command_screenshot = grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename /home/${username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
+        binding_screenshot_interactive = <super> KEY_PRINT
+        command_screenshot_interactive = grim -t ppm - | satty --filename - --fullscreen --output-filename /home/${username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
+        binding_screenshot_alt = <super> <shift> KEY_PRINT
+        command_screenshot_alt = grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename /home/${username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
         binding_terminal = <super> KEY_S
         command_terminal = kitty
         repeatable_binding_light_down = KEY_BRIGHTNESSDOWN

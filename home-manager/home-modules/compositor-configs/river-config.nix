@@ -141,10 +141,10 @@ in
             # Passthrough mode
             "Super F11" = "enter-mode passthrough";
             
-            # Screenshots
-            # "None Print" = "spawn 'grim -o $(lswt -j | jq -c \\'.[] | select(.activated) | .outputs\\' | awk -F\\'\"\\' \\'{print $2}\\') -t jpeg ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg'";
-            "Super Print" = "spawn 'grim -t jpeg -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg'";
-            "Super+Shift Print" = "spawn 'grim -g \"$(slurp)\" -| wl-copy && notify-send \"Screenshot Clipped\"'";
+            # Screenshots with Satty
+            "Print" = "spawn grim -g \"$(slurp -o -r -c '#ff0000ff')\" -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date +%Y%m%d-%H:%M:%S).png";
+            "Super Print" = "spawn grim -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date +%Y%m%d-%H:%M:%S).png";
+            "Super+Shift Print" = "spawn grim -g \"$(slurp -o -r -c '#ff0000ff')\" -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date +%Y%m%d-%H:%M:%S).png";
             
             # Scratchpad
             "Super P" = "toggle-focused-tags 1048576";
