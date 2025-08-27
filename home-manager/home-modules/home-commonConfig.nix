@@ -219,6 +219,10 @@
             { run = "$EDITOR \"$@\""; block = true; for = "unix"; }
             { run = "code \"$@\""; desc = "VS Code"; }
             { run = "cursor \"$@\""; desc = "Cursor"; }
+            { run = "zeditor \"$@\""; desc = "Zed Editor"; }
+            { run = "kate \"$@\""; desc = "Kate"; }
+            { run = "lapce \"$@\""; desc = "Lapce"; }
+            { run = "ghostwriter \"$@\""; desc = "Ghostwriter"; }
           ];
           
           # Images
@@ -312,6 +316,7 @@
           fullscreen = true;
           corner-roundness = 12;
           initial-tool = "brush";
+          actions-on-enter = [ "save-to-file" "exit" ];
           output-filename = "/home/${username}/Pictures/satty-%Y-%m-%d_%H-%M-%S.png";
         };
         color-palette = {

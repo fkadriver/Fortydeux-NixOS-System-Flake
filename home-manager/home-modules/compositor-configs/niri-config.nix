@@ -917,6 +917,12 @@
         Print { screenshot; }
         Ctrl+Print { screenshot-screen; }
         Alt+Print { screenshot-window; }
+        
+        // Satty screenshot bindings for annotation
+        Shift+Print { spawn "bash" "-c" "${config.home.homeDirectory}/.config/scripts/screenshot-region.sh"; }
+        Super+Print { spawn "bash" "-c" "${config.home.homeDirectory}/.config/scripts/screenshot-output.sh"; }
+        Super+Shift+Print { spawn "bash" "-c" "${config.home.homeDirectory}/.config/scripts/screenshot-window.sh"; }
+        
 
         // Applications such as remote-desktop clients and software KVM switches may
         // request that niri stops processing the keyboard shortcuts defined here

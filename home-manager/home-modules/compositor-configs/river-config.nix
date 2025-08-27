@@ -142,9 +142,9 @@ in
             "Super F11" = "enter-mode passthrough";
             
             # Screenshots with Satty
-            "Print" = "spawn grim -g \"$(slurp -o -r -c '#ff0000ff')\" -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date +%Y%m%d-%H:%M:%S).png";
-            "Super Print" = "spawn grim -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date +%Y%m%d-%H:%M:%S).png";
-            "Super+Shift Print" = "spawn grim -g \"$(slurp -o -r -c '#ff0000ff')\" -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date +%Y%m%d-%H:%M:%S).png";
+            "None Print" = "spawn ${config.home.homeDirectory}/.config/scripts/screenshot-region.sh";
+            "Super Print" = "spawn ${config.home.homeDirectory}/.config/scripts/screenshot-output.sh";
+            "Super+Shift Print" = "spawn ${config.home.homeDirectory}/.config/scripts/screenshot-window.sh";
             
             # Scratchpad
             "Super P" = "toggle-focused-tags 1048576";

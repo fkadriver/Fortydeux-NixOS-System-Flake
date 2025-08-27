@@ -425,9 +425,9 @@
       env = XDG_MENU_PREFIX,plasma-
 
       # Screenshots with Satty
-      bind = , PRINT, exec, grim -g "$(slurp -o -r -c '##ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
-      bind = $mainMod, PRINT, exec, grim -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
-      bind = $mainMod SHIFT, PRINT, exec, grim -g "$(slurp -o -r -c '##ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename /home/${config.home.username}/Pictures/satty-$(date '+%Y%m%d-%H:%M:%S').png
+      bind = , PRINT, exec, ${config.home.homeDirectory}/.config/scripts/screenshot-region.sh
+      bind = $mainMod, PRINT, exec, ${config.home.homeDirectory}/.config/scripts/screenshot-output.sh
+      bind = $mainMod SHIFT, PRINT, exec, ${config.home.homeDirectory}/.config/scripts/screenshot-window.sh
       
       # Begin Hyprscroller
       # Move focus with mainMod + arrow keys
