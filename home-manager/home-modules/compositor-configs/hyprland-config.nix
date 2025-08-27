@@ -425,9 +425,9 @@
       env = XDG_MENU_PREFIX,plasma-
 
       # Screenshots with Satty
-      bind = , PRINT, exec, ${config.home.homeDirectory}/.config/scripts/screenshot-region.sh
-      bind = $mainMod, PRINT, exec, ${config.home.homeDirectory}/.config/scripts/screenshot-output.sh
-      bind = $mainMod SHIFT, PRINT, exec, ${config.home.homeDirectory}/.config/scripts/screenshot-window.sh
+      bind = , PRINT, exec, screenshot-region
+      bind = $mainMod, PRINT, exec, screenshot-output
+      bind = $mainMod SHIFT, PRINT, exec, screenshot-window
       
       # Begin Hyprscroller
       # Move focus with mainMod + arrow keys

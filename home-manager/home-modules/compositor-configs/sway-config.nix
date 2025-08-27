@@ -274,10 +274,10 @@ in
       bindsym XF86AudioPrev exec playerctl previous
 
       # Screenshots with Satty
-      set $satty satty -f - --initial-tool=arrow --copy-command=wl-copy --actions-on-escape="save-to-clipboard,exit" --brush-smooth-history-size=5 --disable-notifications --output-filename ${config.home.homeDirectory}/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+      set $satty satty -f - --output-filename ${config.home.homeDirectory}/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
       
       # Quick screenshot bindings (consistent with other compositors)
-      bindsym Print exec grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | $satty
+      bindsym Print exec grim -g "$(slurp -d)" -t ppm - | $satty
       bindsym $mod+Print exec grim -t ppm - | $satty
       
       # Advanced screenshot mode

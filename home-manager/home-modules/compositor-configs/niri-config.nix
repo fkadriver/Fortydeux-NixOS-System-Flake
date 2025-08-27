@@ -919,9 +919,9 @@
         Alt+Print { screenshot-window; }
         
         // Satty screenshot bindings for annotation
-        Shift+Print { spawn "bash" "-c" "${config.home.homeDirectory}/.config/scripts/screenshot-region.sh"; }
-        Super+Print { spawn "bash" "-c" "${config.home.homeDirectory}/.config/scripts/screenshot-output.sh"; }
-        Super+Shift+Print { spawn "bash" "-c" "${config.home.homeDirectory}/.config/scripts/screenshot-window.sh"; }
+        Shift+Print { spawn "screenshot-region"; }
+        Super+Print { spawn "screenshot-output"; }
+        Super+Shift+Print { spawn "screenshot-window"; }
         
 
         // Applications such as remote-desktop clients and software KVM switches may

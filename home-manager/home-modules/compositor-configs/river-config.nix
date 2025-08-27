@@ -142,9 +142,9 @@ in
             "Super F11" = "enter-mode passthrough";
             
             # Screenshots with Satty
-            "None Print" = "spawn ${config.home.homeDirectory}/.config/scripts/screenshot-region.sh";
-            "Super Print" = "spawn ${config.home.homeDirectory}/.config/scripts/screenshot-output.sh";
-            "Super+Shift Print" = "spawn ${config.home.homeDirectory}/.config/scripts/screenshot-window.sh";
+            "None Print" = "spawn screenshot-region";
+            "Super Print" = "spawn screenshot-output";
+            "Super+Shift Print" = "spawn screenshot-window";
             
             # Scratchpad
             "Super P" = "toggle-focused-tags 1048576";

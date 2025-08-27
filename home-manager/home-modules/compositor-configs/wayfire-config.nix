@@ -125,11 +125,11 @@ in
         command_exit = pkill -KILL wayfire
         binding_mute = KEY_MUTE
         binding_screenshot_region = KEY_SYSRQ
-        command_screenshot_region = ${config.home.homeDirectory}/.config/scripts/screenshot-region.sh
+        command_screenshot_region = screenshot-region
         binding_screenshot_output = <super> KEY_SYSRQ
-        command_screenshot_output = ${config.home.homeDirectory}/.config/scripts/screenshot-output.sh
+        command_screenshot_output = screenshot-output
         binding_screenshot_output_region = <super> <shift> KEY_SYSRQ
-        command_screenshot_output_region = ${config.home.homeDirectory}/.config/scripts/screenshot-window.sh
+        command_screenshot_output_region = screenshot-window
         binding_terminal = <super> KEY_S
         command_terminal = kitty
         repeatable_binding_light_down = KEY_BRIGHTNESSDOWN
