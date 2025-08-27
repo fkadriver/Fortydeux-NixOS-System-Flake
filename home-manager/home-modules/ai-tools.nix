@@ -1,6 +1,10 @@
 { config, pkgs, inputs, username, ... }:
 
 {
+  imports = [
+    ./oatmeal.nix
+  ];
+
   home.packages = (with pkgs; [
     appflowy #An open-source alternative to Notion - now with AI drafting features
     code-cursor #AI-powered code editor built on vscode
