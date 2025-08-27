@@ -96,6 +96,7 @@
     micro # Modern and intuitive terminal-based text editor
     neovim # Vim text editor fork focused on extensibility and agility
     nnn # Small ncurses-based file browser forked from noice
+    pcloud # Synced cloud file storage service - similar to Dropbox
     kdePackages.qtwayland # Qt6 Wayland support
     ranger # File manager with minimalistic curses interface
     ripgrep # Utility that combines the usability of The Silver Searcher with the raw speed of grep

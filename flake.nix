@@ -10,11 +10,18 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0"; # Unstable from Flakehub
   	# nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Unstable from NixOS
     # home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1";
-  	home-manager.url = "github:nix-community/home-manager";
-  	# home-manager.url = "github:nix-community/home-manager";
-  	home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+  	home-manager = {
+      url = "github:nix-community/home-manager";
+      # url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Other Projects
+    # NUR - Nix User Repository
+    # nur = {
+    #   url = "github:nix-community/NUR";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # Anyrun launcher
     anyrun.url = "github:anyrun-org/anyrun";
     # Stylix theming

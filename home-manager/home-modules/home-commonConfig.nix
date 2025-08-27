@@ -4,6 +4,7 @@
   imports = [
     ./mime-config.nix
     ./screenshot-tools.nix
+    ./ai-tools.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -29,10 +30,8 @@
     # # "Hello, world!" when run.
     # hello
     # anytype #P2P note-taking tool
-    appflowy #An open-source alternative to Notion
     barrier #Open-source KVM software
     cachix #Command-line client for Nix binary cache hosting https://cachix.org
-    code-cursor #AI-powered code editor built on vscode    
     # cheese # Cheesy camera app
     # decent-sampler #An audio sample player
     # discord #Discord social client
@@ -80,7 +79,6 @@
     super-productivity # To Do List / Time Tracker with Jira Integration
  #   teams #Microsoft Teams application - not yet available for Linux
     # telegram-desktop #Telegram desktop client
-    tenere #Rust-based TUI for interacting with LLMs
     testdisk #Data recovery utilities
     ticktick #A powerful to-do & task management app with seamless cloud synchronization across all your devices
     tldr # Simplified and community-driven man pages
@@ -89,13 +87,9 @@
     vault-tasks #TUI Markdown Task manager
     vscode #Open source source code editor developed by Microsoft for Windows, Linux and macOS    
     # kdePackages.yakuake #Drop-down terminal emulator based on Konsole technologies
-    warp-terminal # Modern rust-based terminal       
-    waveterm # Paneled Terminal, File-Manager w/ Preview, AI chat, and Webviewer
     # waynergy #A synergy client for Wayland compositors
     wiki-tui #Wikipedia TUI interface
-    windsurf # Agentic IDE powered by AI Flow paradigm
     yt-dlp #Command-line tool to download videos from YouTube.com and other sites (youtube-dl fork)
-    zed-editor #Modern text editor with AI built in - still in development for Linux
     # zoom-us #zoom.us video conferencing application
     
     # Alternative audio control applications that work properly
