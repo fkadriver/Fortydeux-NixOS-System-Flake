@@ -72,13 +72,12 @@
       ls = "lsd -lh --group-directories-first --color always --icon always";
       rrr = "ranger";
       yyy = "yazi";
+      fast = "fastfetch";
+      fetch = "fastfetch";
       ff = "cd ~/fortyflake";
-      ffr = "cd ~/fortyflake && ranger";
-      ffy = "cd ~/fortyflake && yazi";
-      ffz = "cd ~/fortyflake && zellij";
-      fff = "cd ~/fortyflake && fish";
       stat = "git status";
       st = "git status -s";
+      teach = "cd ~/pCloudDrive/Shared-TobAnni/T-KNCS-Teaching";
       zzz = "zellij";
       reset-audio = "systemctl --user restart pipewire wireplumber && sleep 2";
     };

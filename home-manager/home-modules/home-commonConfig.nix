@@ -218,6 +218,7 @@
             { run = "kate \"$@\""; desc = "Kate"; }
             { run = "lapce \"$@\""; desc = "Lapce"; }
             { run = "ghostwriter \"$@\""; desc = "Ghostwriter"; }
+            { run = "okular \"$@\""; desc = "Okular"; }
           ];
           
           # Images
