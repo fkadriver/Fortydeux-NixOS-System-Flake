@@ -33,6 +33,7 @@
     barrier #Open-source KVM software
     cachix #Command-line client for Nix binary cache hosting https://cachix.org
     # cheese # Cheesy camera app
+    ctune # Ncurses internet radio TUI
     # decent-sampler #An audio sample player
     # discord #Discord social client
     ext4magic #Recover / undelete files from ext3 or ext4 partitions
@@ -69,6 +70,8 @@
     patchance # JACK Patchbay GUI
     pdfgrep # Commandline utility to search text in PDF files
     poppler_utils #Poppler is a PDF rendering library based on the xpdf-3.0 code base. In addition it provides a number of tools that can be installed separately.    
+    pyradio #Curses based internet radio
+    radio-cli #Simple radio CLI written in rust
     reaper #Reaper DAW
     rustscan #Nmap scanner written in Rust
     satty #Modern Screenshot Annotation tool
@@ -247,7 +250,8 @@
           
           # Documents
           document = [
-            { run = "libreoffice \"$@\""; desc = "LibreOffice"; }
+            { run = "org.libreoffice.LibreOffice \"$@\""; desc = "LibreOffice flatpak"; }
+            { run = "libreoffice \"$@\""; desc = "LibreOffice nixpkgs"; }
             { run = "onlyoffice-desktopeditors \"$@\""; desc = "OnlyOffice"; }
           ];
           
