@@ -253,9 +253,9 @@
             hide-when-single-tab
             place-within-column
             gap 5
-            width 8
+            width 12
             length total-proportion=1.0
-            position "right"
+            position "left"
             gaps-between-tabs 2
             corner-radius 8
             active-color "#${config.lib.stylix.colors.base08}"
@@ -289,13 +289,13 @@
     spawn-at-startup "bash" "-c" "waybar -c $HOME/.config/niri/waybar/config -s $HOME/.config/niri/waybar/style.css"
     spawn-at-startup "mako"
     spawn-at-startup "niriswitcher"
-    spawn-at-startup "xwayland-satellite"
+    // spawn-at-startup "xwayland-satellite"
     spawn-at-startup "bash" "-c" "sleep 3 && pcloud"
     spawn-at-startup "bash" "-c" "swayidle -w timeout 300 'swaylock -f -c 000000' timeout 600 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"' before-sleep 'swaylock -f -c 000000' "
 
-    environment {
-        DISPLAY ":0"
-    }
+    // environment {
+    //     DISPLAY ":0"
+    // }
 
     // Uncomment this line to ask the clients to omit their client-side decorations if possible.
     // If the client will specifically ask for CSD, the request will be honored.

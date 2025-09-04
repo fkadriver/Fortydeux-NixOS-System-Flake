@@ -26,7 +26,7 @@
     anyrun.url = "github:anyrun-org/anyrun";
     # Stylix theming
     stylix.url = "https://flakehub.com/f/danth/stylix/0.1";
-    # stylix.url = "github:danth/stylix";
+    # stylix.url = "github:nix-community/stylix";
     # Niri compositor
     niri.url = "github:YaLTeR/niri";
     # Hyprland compositor + Plugins

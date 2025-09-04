@@ -48,7 +48,7 @@
   };
 
   # River compositor
-  programs.river = {
+  programs.river-classic = {
     enable = true;
   };
 
