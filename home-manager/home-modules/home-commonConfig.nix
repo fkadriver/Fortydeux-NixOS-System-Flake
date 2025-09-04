@@ -99,6 +99,9 @@
     pwvucontrol  # Modern PipeWire volume control (should have working icons)
     pavucontrol  # Keep original as fallback
     
+    # File utilities
+    file  # File type detection utility
+    
    ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -222,30 +225,35 @@
             { run = "lapce \"$@\""; desc = "Lapce"; }
             { run = "ghostwriter \"$@\""; desc = "Ghostwriter"; }
             { run = "okular \"$@\""; desc = "Okular"; }
+            { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
           
           # Images
           image = [
             { run = "gwenview \"$@\""; desc = "Gwenview"; }
             { run = "firefox \"$@\""; desc = "Firefox"; }
+            { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
           
           # Videos
           video = [
             { run = "mpv \"$@\""; desc = "MPV"; }
             { run = "vlc \"$@\""; desc = "VLC"; }
+            { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
           
           # Audio
           audio = [
             { run = "mpv \"$@\""; desc = "MPV"; }
             { run = "vlc \"$@\""; desc = "VLC"; }
-          ];
+            { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
+            ];
           
           # PDFs
           pdf = [
             { run = "okular \"$@\""; desc = "Okular"; }
             { run = "firefox \"$@\""; desc = "Firefox"; }
+            { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
           
           # Documents
@@ -253,16 +261,19 @@
             { run = "org.libreoffice.LibreOffice \"$@\""; desc = "LibreOffice flatpak"; }
             { run = "libreoffice \"$@\""; desc = "LibreOffice nixpkgs"; }
             { run = "onlyoffice-desktopeditors \"$@\""; desc = "OnlyOffice"; }
+            { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
           
           # Archives
           archive = [
             { run = "ark \"$@\""; desc = "Ark"; }
+            { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
           
           # Web links
           web = [
             { run = "firefox \"$@\""; desc = "Firefox"; }
+            { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
         };
         
@@ -270,6 +281,7 @@
           rules = [
             { name = "*/"; use = [ "edit" "reveal" ]; }
             { mime = "text/*"; use = [ "edit" "reveal" ]; }
+            # MIME type rules
             { mime = "image/*"; use = [ "image" "reveal" ]; }
             { mime = "video/*"; use = [ "video" "reveal" ]; }
             { mime = "audio/*"; use = [ "audio" "reveal" ]; }
@@ -278,26 +290,137 @@
             { mime = "application/x-tar"; use = [ "archive" "reveal" ]; }
             { mime = "application/x-7z-compressed"; use = [ "archive" "reveal" ]; }
             { mime = "application/x-rar-compressed"; use = [ "archive" "reveal" ]; }
+            { mime = "application/x-bzip2"; use = [ "archive" "reveal" ]; }
+            { mime = "application/x-xz"; use = [ "archive" "reveal" ]; }
+            { mime = "application/x-lzma"; use = [ "archive" "reveal" ]; }
+            { mime = "font/ttf"; use = [ "reveal" ]; }
+            { mime = "font/otf"; use = [ "reveal" ]; }
+            { mime = "font/woff"; use = [ "reveal" ]; }
+            { mime = "font/woff2"; use = [ "reveal" ]; }
+            { mime = "model/vnd.collada+xml"; use = [ "reveal" ]; }
+            { mime = "application/sla"; use = [ "reveal" ]; }
+            # Code and markup files
             { name = "*.nix"; use = [ "edit" "reveal" ]; }
             { name = "*.py"; use = [ "edit" "reveal" ]; }
             { name = "*.rs"; use = [ "edit" "reveal" ]; }
             { name = "*.js"; use = [ "edit" "reveal" ]; }
             { name = "*.ts"; use = [ "edit" "reveal" ]; }
-            { name = "*.md"; use = [ "edit" "reveal" ]; }
             { name = "*.json"; use = [ "edit" "reveal" ]; }
             { name = "*.yaml"; use = [ "edit" "reveal" ]; }
             { name = "*.yml"; use = [ "edit" "reveal" ]; }
             { name = "*.toml"; use = [ "edit" "reveal" ]; }
+            { name = "*.xml"; use = [ "edit" "reveal" ]; }
+            { name = "*.html"; use = [ "edit" "reveal" ]; }
+            { name = "*.htm"; use = [ "edit" "reveal" ]; }
+            { name = "*.css"; use = [ "edit" "reveal" ]; }
+            { name = "*.sql"; use = [ "edit" "reveal" ]; }
+            { name = "*.sh"; use = [ "edit" "reveal" ]; }
+            { name = "*.bash"; use = [ "edit" "reveal" ]; }
+            { name = "*.zsh"; use = [ "edit" "reveal" ]; }
+            { name = "*.fish"; use = [ "edit" "reveal" ]; }
+            { name = "*.c"; use = [ "edit" "reveal" ]; }
+            { name = "*.cpp"; use = [ "edit" "reveal" ]; }
+            { name = "*.cc"; use = [ "edit" "reveal" ]; }
+            { name = "*.h"; use = [ "edit" "reveal" ]; }
+            { name = "*.hpp"; use = [ "edit" "reveal" ]; }
+            
+            # Image files
+            { name = "*.jpg"; use = [ "image" "reveal" ]; }
+            { name = "*.jpeg"; use = [ "image" "reveal" ]; }
+            { name = "*.png"; use = [ "image" "reveal" ]; }
+            { name = "*.gif"; use = [ "image" "reveal" ]; }
+            { name = "*.bmp"; use = [ "image" "reveal" ]; }
+            { name = "*.svg"; use = [ "image" "reveal" ]; }
+            { name = "*.webp"; use = [ "image" "reveal" ]; }
+            { name = "*.tiff"; use = [ "image" "reveal" ]; }
+            { name = "*.tif"; use = [ "image" "reveal" ]; }
+            { name = "*.ico"; use = [ "image" "reveal" ]; }
+            { name = "*.xcf"; use = [ "image" "reveal" ]; }
+            
+            # Video files
+            { name = "*.mp4"; use = [ "video" "reveal" ]; }
+            { name = "*.avi"; use = [ "video" "reveal" ]; }
+            { name = "*.mkv"; use = [ "video" "reveal" ]; }
+            { name = "*.mov"; use = [ "video" "reveal" ]; }
+            { name = "*.wmv"; use = [ "video" "reveal" ]; }
+            { name = "*.flv"; use = [ "video" "reveal" ]; }
+            { name = "*.webm"; use = [ "video" "reveal" ]; }
+            { name = "*.m4v"; use = [ "video" "reveal" ]; }
+            { name = "*.mpg"; use = [ "video" "reveal" ]; }
+            { name = "*.mpeg"; use = [ "video" "reveal" ]; }
+            { name = "*.ogv"; use = [ "video" "reveal" ]; }
+            
+            # Audio files
+            { name = "*.mp3"; use = [ "audio" "reveal" ]; }
+            { name = "*.wav"; use = [ "audio" "reveal" ]; }
+            { name = "*.flac"; use = [ "audio" "reveal" ]; }
+            { name = "*.ogg"; use = [ "audio" "reveal" ]; }
+            { name = "*.m4a"; use = [ "audio" "reveal" ]; }
+            { name = "*.aac"; use = [ "audio" "reveal" ]; }
+            { name = "*.wma"; use = [ "audio" "reveal" ]; }
+            
+            # Archive files
+            { name = "*.zip"; use = [ "archive" "reveal" ]; }
+            { name = "*.tar"; use = [ "archive" "reveal" ]; }
+            { name = "*.gz"; use = [ "archive" "reveal" ]; }
+            { name = "*.bz2"; use = [ "archive" "reveal" ]; }
+            { name = "*.7z"; use = [ "archive" "reveal" ]; }
+            { name = "*.rar"; use = [ "archive" "reveal" ]; }
+            { name = "*.xz"; use = [ "archive" "reveal" ]; }
+            { name = "*.lzma"; use = [ "archive" "reveal" ]; }
+            
+            # Font files
+            { name = "*.ttf"; use = [ "reveal" ]; }
+            { name = "*.otf"; use = [ "reveal" ]; }
+            { name = "*.woff"; use = [ "reveal" ]; }
+            { name = "*.woff2"; use = [ "reveal" ]; }
+            
+            # 3D/CAD files
+            { name = "*.stl"; use = [ "reveal" ]; }
+            { name = "*.obj"; use = [ "edit" "reveal" ]; }
+            { name = "*.fbx"; use = [ "reveal" ]; }
+            { name = "*.dae"; use = [ "reveal" ]; }
+            
+            # Microsoft Office formats
             { name = "*.docx"; use = [ "document" "reveal" ]; }
             { name = "*.doc"; use = [ "document" "reveal" ]; }
             { name = "*.xlsx"; use = [ "document" "reveal" ]; }
             { name = "*.xls"; use = [ "document" "reveal" ]; }
             { name = "*.pptx"; use = [ "document" "reveal" ]; }
             { name = "*.ppt"; use = [ "document" "reveal" ]; }
+            
+            # OpenDocument formats
             { name = "*.odt"; use = [ "document" "reveal" ]; }
             { name = "*.ods"; use = [ "document" "reveal" ]; }
             { name = "*.odp"; use = [ "document" "reveal" ]; }
+            { name = "*.odg"; use = [ "document" "reveal" ]; }
+            { name = "*.odc"; use = [ "document" "reveal" ]; }
+            { name = "*.odf"; use = [ "document" "reveal" ]; }
+            { name = "*.odi"; use = [ "document" "reveal" ]; }
+            { name = "*.odm"; use = [ "document" "reveal" ]; }
+            
+            # Other document formats
             { name = "*.rtf"; use = [ "document" "reveal" ]; }
+            { name = "*.csv"; use = [ "document" "reveal" ]; }
+            { name = "*.txt"; use = [ "edit" "reveal" ]; }
+            { name = "*.md"; use = [ "edit" "reveal" ]; }
+            { name = "*.rst"; use = [ "edit" "reveal" ]; }
+            { name = "*.log"; use = [ "edit" "reveal" ]; }
+            
+            # Database files
+            { name = "*.db"; use = [ "reveal" ]; }
+            { name = "*.sqlite"; use = [ "reveal" ]; }
+            { name = "*.sqlite3"; use = [ "reveal" ]; }
+            
+            # Web and configuration files
+            { name = "*.conf"; use = [ "edit" "reveal" ]; }
+            { name = "*.config"; use = [ "edit" "reveal" ]; }
+            { name = "*.ini"; use = [ "edit" "reveal" ]; }
+            { name = "*.cfg"; use = [ "edit" "reveal" ]; }
+            { name = "*.env"; use = [ "edit" "reveal" ]; }
+            { name = "*.lock"; use = [ "edit" "reveal" ]; }
+            
+            # Catch-all rule for any remaining files
             { name = "*"; use = [ "edit" "reveal" ]; }
           ];
         };
