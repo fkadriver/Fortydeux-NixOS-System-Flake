@@ -2,6 +2,11 @@
 
 { ## dotfiles.nix
 
+  imports = [
+    ./dotfiles/anyrun.nix
+    ./dotfiles/mako.nix
+  ];
+
 
   # Enable & Configure i3status-rust
   programs.i3status-rust = {
@@ -99,10 +104,11 @@
     	source = ./dotfiles/logos;
     	recursive = true;
     };
-    ".config/mako" = {
-    	source = ./dotfiles/mako;
-    	recursive = true;
-    };
+    # Mako is now managed by services.mako in mako.nix
+    # ".config/mako" = {
+    # 	source = ./dotfiles/mako;
+    #     recursive = true;
+    # };
     ".config/micro" = {
     	source = ./dotfiles/micro;
     	recursive = true;

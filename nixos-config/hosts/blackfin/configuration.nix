@@ -37,7 +37,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 8;
 
-  # Kernel - Turn off when MS-Surface Kernel is enabled
+  # Kernel to use
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Musnix realtime kernel
   # musnix.kernel = {

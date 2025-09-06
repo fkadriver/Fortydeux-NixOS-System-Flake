@@ -21,6 +21,9 @@
     ];
   };
 
+  # Kernel version for MS Surface kernel
+  hardware.microsoft-surface.kernelVersion = "stable";  
+
   # Surface Laptop Support
   environment.systemPackages = [
     pkgs.libwacom-surface
@@ -44,4 +47,13 @@
   #   "videobuf2_vmalloc"
       "ipu3_imgu"
   ];
+  # boot.kernelPatches = [
+  #   {
+  #     name = "disable-rust";
+  #     patch = null;
+  #     extraConfig = ''
+  #       RUST n
+  #     '';
+  #   }
+  # ];
 }

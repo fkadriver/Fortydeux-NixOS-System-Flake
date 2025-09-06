@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -24,10 +25,14 @@
     # Device-specific
     ./hardware-configuration.nix
     # Remember to also comment out MS-Surface lines in flake.nix if disabling
-    # ../../system-modules/ms-surface.nix
+    ../../system-modules/ms-surface.nix
   ];
   # Kernel - Turn off when MS-Surface Kernel is enabled
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Enable iptsd & surface-control for touch & stylus
+  # services.iptsd.enable = lib.mkDefault true;
+  # environment.systemPackages = [ pkgs.surface-control ];
 
   # The most common options you'll want to change for a new host machine reside here
   # For most machines, you'll want to comment out ./ms-surface.nix
