@@ -26,7 +26,7 @@
 
   # Fix for Stylix kde6 platformTheme issue
   # Override the invalid "kde6" value with "kde" which is compatible with both Plasma5 and Plasma6
-  qt.platformTheme = lib.mkForce "kde";
+  # qt.platformTheme = lib.mkForce "kde";
 
   environment.systemPackages = with pkgs; [
     adwaita-icon-theme
