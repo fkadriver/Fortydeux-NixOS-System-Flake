@@ -10,7 +10,8 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0"; # Unstable from Flakehub
   	# nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # Unstable from NixOS
     # home-manager.url = "https://flakehub.com/f/nix-community/home-manager/0.1";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/a65b650d6981e23edd1afa1f01eb942f19cdcbb7";
   	home-manager = {
       url = "github:nix-community/home-manager";
       # url = "github:nix-community/home-manager";

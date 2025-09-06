@@ -787,17 +787,17 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1757103352,
-        "narHash": "sha256-PtT7ix43ss8PONJ1VJw3f6t2yAoGH+q462Sn8lrmWmk=",
+        "lastModified": 1756245047,
+        "narHash": "sha256-9bHzrVbjAudbO8q4vYFBWlEkDam31fsz0J7GB8k4AsI=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "11b2a10c7be726321bb854403fdeec391e798bf0",
+        "rev": "a65b650d6981e23edd1afa1f01eb942f19cdcbb7",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "master",
         "repo": "nixos-hardware",
+        "rev": "a65b650d6981e23edd1afa1f01eb942f19cdcbb7",
         "type": "github"
       }
     },
@@ -1059,12 +1059,12 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1757119848,
-        "narHash": "sha256-DxxKBdP6MFleepcB1hsQYU4cHvvFTekFWlomqot7k9A=",
-        "rev": "f6e9a1b62457efcbf48a09aafbf7233f306fcdc9",
-        "revCount": 1186,
+        "lastModified": 1757166832,
+        "narHash": "sha256-PfmoPf09kR0WR1SVU2x79U7Iq/bVsHfQGjo+aaZCMg4=",
+        "rev": "c1ac8e9b3f96648e065fead56c63d8023b89a47d",
+        "revCount": 1187,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/danth/stylix/0.1.1186%2Brev-f6e9a1b62457efcbf48a09aafbf7233f306fcdc9/01991c82-b2ee-7f70-914f-074d3ff5e201/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/danth/stylix/0.1.1187%2Brev-c1ac8e9b3f96648e065fead56c63d8023b89a47d/01991f4f-3374-7f4d-b2d3-4faa0361763d/source.tar.gz"
       },
       "original": {
         "type": "tarball",
