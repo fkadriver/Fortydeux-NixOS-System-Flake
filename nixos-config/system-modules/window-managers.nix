@@ -172,6 +172,13 @@
 
 
 
+  # Hyprshell Cachix cache configuration
+  nix.settings = {
+    # Add Hyprshell Cachix cache for faster builds
+    substituters = [ "https://hyprshell.cachix.org" ];
+    trusted-public-keys = [ "hyprshell.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  };
+
   # System packages optimized for compositor compatibility
   environment.systemPackages = with pkgs; [
     # Core Wayland utilities

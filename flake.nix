@@ -44,6 +44,10 @@
        url = "github:horriblename/hyprgrass";
        inputs.hyprland.follows = "hyprland"; # IMPORTANT
     };  
+    hyprshell = {
+      url = "github:H3rmt/hyprshell?ref=hyprshell-release";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #MusNix
     musnix.url = "github:musnix/musnix";
   };
