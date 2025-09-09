@@ -6,7 +6,7 @@
 }:
 
 # let
-#   system = pkgs.hostPlatform.system;
+#   system = pkgs.stdenv.hostPlatform.system;
 # in
 {
   imports =
@@ -142,13 +142,13 @@
         new_status = "master";
       };
 
-      gestures = {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
-        workspace_swipe = false;
-        workspace_swipe_invert = false;
-        # workspace_swipe_fingers = 4;
-        # workspace_swipe_cancel_ratio = 0.15;
-      };
+      # gestures = {
+      #   # See https://wiki.hyprland.org/Configuring/Variables/ for more
+      #   workspace_swipe = false;
+      #   workspace_swipe_invert = false;
+      #   # workspace_swipe_fingers = 4;
+      #   # workspace_swipe_cancel_ratio = 0.15;
+      # };
 
       # Example per-device config
       # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
