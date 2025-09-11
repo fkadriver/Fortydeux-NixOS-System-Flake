@@ -102,6 +102,10 @@
     # File utilities
     file  # File type detection utility
     
+    # PDF tools
+    xournalpp  # Handwriting note-taking application
+    evince  # Document viewer for PDF files
+    
    ]);
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -252,6 +256,11 @@
           # PDFs
           pdf = [
             { run = "okular \"$@\""; desc = "Okular"; }
+            { run = "evince \"$@\""; desc = "Evince"; }
+            { run = "xournalpp \"$@\""; desc = "Xournal++"; }
+            { run = "org.libreoffice.LibreOffice --draw \"$@\""; desc = "LibreOffice Draw (flatpak)"; }
+            { run = "libreoffice --draw \"$@\""; desc = "LibreOffice Draw (nixpkgs)"; }
+            { run = "onlyoffice-desktopeditors \"$@\""; desc = "OnlyOffice"; }
             { run = "firefox \"$@\""; desc = "Firefox"; }
             { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
@@ -273,6 +282,15 @@
           # Web links
           web = [
             { run = "firefox \"$@\""; desc = "Firefox"; }
+            { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
+          ];
+          
+          # Reveal in file manager
+          reveal = [
+            { run = "nautilus \"$@\""; desc = "Nautilus"; }
+            { run = "dolphin \"$@\""; desc = "Dolphin"; }
+            { run = "thunar \"$@\""; desc = "Thunar"; }
+            { run = "pcmanfm \"$@\""; desc = "PCManFM"; }
             { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
         };
