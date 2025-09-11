@@ -23,7 +23,10 @@
     # inputs.hyprland-qtutils.packages.${pkgs.system}.default
     iio-hyprland
     # Add hyprscrolling plugin to system packages
-    hyprlandPlugins.hyprscrolling
+    # hyprlandPlugins.hyprscrolling
+    # hyprlandPlugins.hyprexpo
+    # hyprlandPlugins.hyprgrass
+    # hyprshell
   ];
   xdg.portal = {
     enable = true;
@@ -59,7 +62,8 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
-    package = inputs.hyprland.packages.${pkgs.system}.default;
+    package = pkgs.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.system}.default;
     # package = pkgs.hyprland;
     # systemd.variables = ["--all"];
     plugins = [
@@ -69,6 +73,7 @@
       # Hyprscroller plugin - commented out, switching to hyprscrolling
       # pkgs.hyprlandPlugins.hyprscroller
       # HyprExpo
+      # pkgs.hyprlandPlugins.hyprexpo
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
       # inputs.hyprscroller.packages.${pkgs.system}.default
       # New official hyprscrolling plugin from hyprland-plugins flake input
@@ -257,8 +262,8 @@
         "SUPER, Escape, exec, notify-send 'Config Reloaded'"
 
         # Move focus with mainMod + arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
+        # "$mainMod, left, movefocus, l"
+        # "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
 
@@ -350,7 +355,7 @@
           # Column configuration
           fullscreen_on_one_column = false;
           column_width = 0.5;  # Default column width (50% of monitor width)
-          explicit_column_widths = "0.333, 0.5, 0.667, 1.0";  # Predefined widths for cycling
+          explicit_column_widths = "0.333, 0.5, 0.667, 0.8, 1.0";  # Predefined widths for cycling
           
           # Focus behavior
           focus_fit_method = 0;  # 0 = center, 1 = fit
@@ -611,6 +616,8 @@
       # Using layoutmsg dispatcher to access hyprscrolling layout messages
       
       # Focus movement with layout centering and wrapping
+      bind = $mainMod, left, layoutmsg, focus l
+      bind = $mainMod, right, layoutmsg, focus r
       bind = $mainMod, h, layoutmsg, focus l
       bind = $mainMod, l, layoutmsg, focus r
       bind = $mainMod, j, movefocus, d

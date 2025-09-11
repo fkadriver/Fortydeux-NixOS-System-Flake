@@ -12,10 +12,10 @@
   networking.networkmanager.enable = true;
 
   # Tailscale    
-  services.tailscale = {
-    enable = true;
-    openFirewall = true;
-  }; 
+  # services.tailscale = {
+  #   enable = true;
+  #   openFirewall = true;
+  # }; 
 
   # Packages
   programs.kdeconnect.enable = true;
