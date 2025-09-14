@@ -10,13 +10,13 @@ on:
         default: false
         type: boolean
   
-  # Automatic trigger on kernel-related changes
+  # Automatic trigger on kernel-related changes only
   push:
     branches:
       - main
     paths:
-      - 'flake.lock'
       - 'nixos-config/system-modules/ms-surface.nix'
+      - 'nixos-config/system-modules/ms-surface-cachix.nix'
 
 jobs:
   build-surface-kernel:
@@ -29,6 +29,31 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/determinate-nix-action@v3
 
+      - name: Validate Cachix configuration
+        run: |
+          if [ -z "${{ secrets.CACHIX_AUTH_TOKEN }}" ]; then
+            echo "❌ CACHIX_AUTH_TOKEN secret is not configured!"
+            echo ""
+            echo "📋 To fix this:"
+            echo "1. Go to your GitHub repository settings"
+            echo "2. Navigate to Secrets and variables → Actions"
+            echo "3. Add a new repository secret named 'CACHIX_AUTH_TOKEN'"
+            echo "4. Get the token from https://cachix.org → fortydeux-surface → Settings → Auth Tokens"
+            echo ""
+            echo "🔗 Repository: https://github.com/${{ github.repository }}/settings/secrets/actions"
+            exit 1
+          else
+            echo "✅ CACHIX_AUTH_TOKEN is configured"
+          fi
+
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: fortydeux-surface
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+        env:
+          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
       - name: Get kernel info
         id: kernel-info
         run: |
@@ -39,25 +64,41 @@ jobs:
           echo "Kernel derivation: $KERNEL_DRV"
           echo "Hash: $KERNEL_HASH"
 
-      - name: Check if kernel already built
-        id: kernel-check
+      - name: Check if kernel already in Cachix
+        id: cachix-check
         run: |
-          if nix path-info --store daemon ${{ steps.kernel-info.outputs.drv-path }} 2>/dev/null; then
+          echo "Checking if kernel is already available in Cachix cache..."
+          
+          # Get the kernel derivation path
+          KERNEL_DRV="${{ steps.kernel-info.outputs.drv-path }}"
+          KERNEL_HASH="${{ steps.kernel-info.outputs.hash }}"
+          
+          echo "Kernel hash: $KERNEL_HASH"
+          
+          # Try to fetch the kernel from Cachix using the specific derivation
+          if nix build --accept-flake-config --substituters "https://fortydeux-surface.cachix.org" --trusted-public-keys "fortydeux-surface.cachix.org-1:FFouI4YY62YGdnQbABdRu+jGfhMDnO+zNWGocIFd3rs=" "$KERNEL_DRV" --dry-run 2>/dev/null; then
             echo "cached=true" >> $GITHUB_OUTPUT
-            echo "Kernel already available in cache"
+            echo "✅ Kernel (hash: $KERNEL_HASH) already available in Cachix cache"
           else
             echo "cached=false" >> $GITHUB_OUTPUT
-            echo "Kernel needs to be built"
+            echo "❌ Kernel (hash: $KERNEL_HASH) not found in Cachix cache, needs to be built"
           fi
 
-      - name: Setup Cachix
-        uses: cachix/cachix-action@v15
-        with:
-          name: fortydeux-surface
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Skip build - kernel already cached
+        if: steps.cachix-check.outputs.cached == 'true' && github.event.inputs.force_rebuild != 'true'
+        run: |
+          echo "🎉 Kernel is already available in Cachix cache!"
+          echo "✅ No build needed - your devices can use the cached kernel"
+          echo "🔄 To force a rebuild, use the manual trigger with 'force_rebuild' enabled"
+          echo ""
+          echo "📊 Workflow Summary:"
+          echo "  - Trigger: ${{ github.event_name }}"
+          echo "  - Kernel Hash: ${{ steps.kernel-info.outputs.hash }}"
+          echo "  - Status: Already cached ✅"
+          echo "  - Action: Skipped build (no changes needed)"
           
       - name: Build Surface Kernel
-        if: steps.kernel-check.outputs.cached != 'true' || github.event.inputs.force_rebuild == 'true'
+        if: steps.cachix-check.outputs.cached != 'true' || github.event.inputs.force_rebuild == 'true'
         run: |
           echo "Building Surface kernel (this may take up to 3 hours)..."
           echo "This builds the patched Linux kernel with Surface hardware support"
@@ -74,6 +115,7 @@ jobs:
           echo "Kernel pushed to Cachix cache: fortydeux-surface"
 
       - name: Verify kernel availability
+        if: steps.cachix-check.outputs.cached != 'true' || github.event.inputs.force_rebuild == 'true'
         run: |
           KERNEL_OUT=$(nix eval --accept-flake-config --raw .#nixosConfigurations.archerfish-nixos.config.boot.kernelPackages.kernel.outPath)
           if nix path-info $KERNEL_OUT; then
@@ -88,13 +130,25 @@ jobs:
       - name: Usage instructions
         run: |
           echo ""
-          echo "🎉 Surface kernel build completed!"
-          echo ""
-          echo "📋 Next steps:"
-          echo "1. Add Cachix to your flake.nix substituters (see workflow output)"
-          echo "2. Run 'sudo nixos-rebuild switch --flake .#archerfish-nixos' on archerfish"
-          echo "3. Run 'sudo nixos-rebuild switch --flake .#killifish-nixos' on killifish" 
-          echo "4. Both machines will pull the pre-built kernel from Cachix cache"
-          echo ""
-          echo "⏰ The kernel will be cached and available for future rebuilds"
-          echo "🔄 Only rebuild when you see a new kernel compilation starting locally"
+          if [ "${{ steps.cachix-check.outputs.cached }}" == "true" ] && [ "${{ github.event.inputs.force_rebuild }}" != "true" ]; then
+            echo "🎉 Surface kernel workflow completed - kernel already cached!"
+            echo ""
+            echo "✅ The kernel is already available in your Cachix cache"
+            echo "🔄 Your devices can use the cached kernel without building locally"
+            echo ""
+            echo "📋 To use the cached kernel:"
+            echo "1. Run 'sudo nixos-rebuild switch --flake .#archerfish-nixos' on archerfish"
+            echo "2. Run 'sudo nixos-rebuild switch --flake .#killifish-nixos' on killifish"
+            echo "3. Both machines will pull the pre-built kernel from Cachix cache"
+          else
+            echo "🎉 Surface kernel build completed!"
+            echo ""
+            echo "📋 Next steps:"
+            echo "1. The kernel has been pushed to your Cachix cache"
+            echo "2. Run 'sudo nixos-rebuild switch --flake .#archerfish-nixos' on archerfish"
+            echo "3. Run 'sudo nixos-rebuild switch --flake .#killifish-nixos' on killifish" 
+            echo "4. Both machines will pull the pre-built kernel from Cachix cache"
+            echo ""
+            echo "⏰ The kernel will be cached and available for future rebuilds"
+            echo "🔄 Only rebuild when you see a new kernel compilation starting locally"
+          fi
