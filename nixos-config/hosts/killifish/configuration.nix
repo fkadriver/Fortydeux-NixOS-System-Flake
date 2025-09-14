@@ -15,8 +15,7 @@
     ../../system-modules/plasma.nix
     # ../../system-modules/window-managers.nix
     # ../../system-modules/cosmic-desktop.nix
-    # ../../system-modules/pcloud.nix
-    # ../../system-modules/extraFonts.nix
+    ../../system-modules/extraFonts.nix
     # ../../system-modules/virtualisation.nix
     # ../../system-modules/audio-prod.nix
     # ../../system-modules/fun-and-games.nix
@@ -25,6 +24,7 @@
     # Device-specific
     ./hardware-configuration.nix
     # Remember to also comment out MS-Surface lines in flake.nix if disabling
+    ../../system-modules/ms-surface-cachix.nix
     ../../system-modules/ms-surface.nix
   ];
   # Kernel - Turn off when MS-Surface Kernel is enabled

@@ -213,7 +213,7 @@
     
     # Application launchers
     wofi
-    rofi-wayland
+    rofi
     bemenu
     
     # Notifications

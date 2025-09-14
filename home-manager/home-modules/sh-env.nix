@@ -75,6 +75,7 @@
       fast = "fastfetch";
       fetch = "fastfetch";
       ff = "cd ~/fortyflake";
+      ffy = "cd ~/fortyflake && yazi";
       stat = "git status";
       st = "git status -s";
       teach = "cd ~/pCloudDrive/Shared-TobAnni/T-KNCS-Teaching";
