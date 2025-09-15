@@ -478,7 +478,9 @@
     };
   };
 
-  # services = {
+  services = {
+    caffeine.enable = true;
+    
   #   walker = {
   #     enable = true;
   #     settings =  {
@@ -495,7 +497,7 @@
   #         timeout = 0;
   #       };
   #   };
-  # };
+  };
   
   home.sessionVariables = {
     # NNN_OPENER = "/home/${user}/scripts/file-ops/linkhandler.sh";
