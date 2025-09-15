@@ -48,6 +48,7 @@
       url = "github:H3rmt/hyprshell?ref=hyprshell-release";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    anyrun.url = "github:anyrun-org/anyrun";
     #MusNix
     musnix.url = "github:musnix/musnix";
   };

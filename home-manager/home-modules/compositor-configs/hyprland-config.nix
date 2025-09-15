@@ -77,8 +77,8 @@
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
       # inputs.hyprscroller.packages.${pkgs.system}.default
       # New official hyprscrolling plugin from hyprland-plugins flake input
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling
       # pkgs.hyprlandPlugins.hyprscrolling
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling
     ];
     settings = {
       "$mainMod" = "SUPER";
@@ -339,17 +339,17 @@
         
 
         # HyprExpo
-        hyprexpo = {
-          columns = 3;
-          gap_size = 5;
-          bg_col = "rgb(111111)";
-          workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
+        # hyprexpo = {
+        #   columns = 3;
+        #   gap_size = 5;
+        #   bg_col = "rgb(111111)";
+        #   workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
 
-          enable_gesture = true; # laptop touchpad
-          gesture_fingers = 4;  # 3 or 4
-          gesture_distance = 300; # how far is the "max"
-          gesture_positive = true; # positive = swipe down. Negative = swipe up.
-        };
+        #   enable_gesture = true; # laptop touchpad
+        #   gesture_fingers = 4;  # 3 or 4
+        #   gesture_distance = 300; # how far is the "max"
+        #   gesture_positive = true; # positive = swipe down. Negative = swipe up.
+        # };
         # New official hyprscrolling plugin configuration
         hyprscrolling = {
           # Column configuration
@@ -373,8 +373,8 @@
             " , swipe:3:r, movefocus, l"
             " , swipe:3:u, movefocus, d"
             " , swipe:3:d, movefocus, u"
-            " , swipe:4:u, hyprexpo:expo, toggle"
-            " , swipe:4:d, hyprexpo:expo, toggle"
+            # " , swipe:4:u, hyprexpo:expo, toggle"
+            # " , swipe:4:d, hyprexpo:expo, toggle"
             " , swipe:3:ld, killactive"
             " , swipe:3:ru, exec, $wofi"
             " , swipe:3:lu, exec, wvkbd-mobintl"
@@ -523,7 +523,7 @@
       # # bind key to toggle overview (normal)
       # bind = $mainMod, grave, scroller:toggleoverview
       # bind = ,mouse:275, scroller:toggleoverview
-      bind = $mainMod, grave, hyprexpo:expo, toggle
+      # bind = $mainMod, grave, hyprexpo:expo, toggle
 
       # # Marks
       # bind = $mainMod, M, exec, notify-send "Scroller Submap" "Add Marks Mode - Use A/B/C to mark, ESC to exit"

@@ -20,8 +20,8 @@
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    # package = pkgs.hyprland;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = pkgs.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
   # Miracle-WM
