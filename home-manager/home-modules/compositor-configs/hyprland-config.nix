@@ -33,37 +33,37 @@
     # extraPortals = [ pkgs.xdg-desktop-portal-hyprland ]; 
   };
   # Hyprshell Plugin
-  programs.hyprshell = {
-    enable = true;
-    systemd.args = "-v";
-    settings = {
-      windows = {
-        enable = true;
-        overview = {
-          enable = true;
-          # key = "super_tab";
-          # modifier = "alt";
-          launcher = {
-            max_items = 6;
-            plugins.websearch = {
-                enable = true;
-                engines = [{
-                    name = "DuckDuckGo";
-                    url = "https://duckduckgo.com/?q=%s";
-                    key = "d";
-                }];
-            };
-          };
-        };
-        switch.enable = false;
-      };
-    };
-  };
+  # programs.hyprshell = {
+  #   enable = true;
+  #   systemd.args = "-v";
+  #   settings = {
+  #     windows = {
+  #       enable = true;
+  #       overview = {
+  #         enable = true;
+  #         # key = "super_tab";
+  #         # modifier = "alt";
+  #         launcher = {
+  #           max_items = 6;
+  #           plugins.websearch = {
+  #               enable = true;
+  #               engines = [{
+  #                   name = "DuckDuckGo";
+  #                   url = "https://duckduckgo.com/?q=%s";
+  #                   key = "d";
+  #               }];
+  #           };
+  #         };
+  #       };
+  #       switch.enable = false;
+  #     };
+  #   };
+  # };
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = false;
-    package = pkgs.hyprland;
-    # package = inputs.hyprland.packages.${pkgs.system}.default;
+    # systemd.enable = false;
+    # package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.default;
     # package = pkgs.hyprland;
     # systemd.variables = ["--all"];
     plugins = [
@@ -97,7 +97,7 @@
         "hyprctl setcursor phinger-cursors 32"
         "emacs --daemon"
         "foot -s"
-        "waybar"
+        # "waybar"  # Removed - now handled by systemd integration
         "mako"
         "nm-applet --indicator"
         "blueman-applet"
@@ -339,17 +339,17 @@
         
 
         # HyprExpo
-        # hyprexpo = {
-        #   columns = 3;
-        #   gap_size = 5;
-        #   bg_col = "rgb(111111)";
-        #   workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
+        hyprexpo = {
+          columns = 3;
+          gap_size = 5;
+          bg_col = "rgb(111111)";
+          workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
 
-        #   enable_gesture = true; # laptop touchpad
-        #   gesture_fingers = 4;  # 3 or 4
-        #   gesture_distance = 300; # how far is the "max"
-        #   gesture_positive = true; # positive = swipe down. Negative = swipe up.
-        # };
+          enable_gesture = true; # laptop touchpad
+          gesture_fingers = 4;  # 3 or 4
+          gesture_distance = 300; # how far is the "max"
+          gesture_positive = true; # positive = swipe down. Negative = swipe up.
+        };
         # New official hyprscrolling plugin configuration
         hyprscrolling = {
           # Column configuration
@@ -373,8 +373,8 @@
             " , swipe:3:r, movefocus, l"
             " , swipe:3:u, movefocus, d"
             " , swipe:3:d, movefocus, u"
-            # " , swipe:4:u, hyprexpo:expo, toggle"
-            # " , swipe:4:d, hyprexpo:expo, toggle"
+            " , swipe:4:u, hyprexpo:expo, toggle"
+            " , swipe:4:d, hyprexpo:expo, toggle"
             " , swipe:3:ld, killactive"
             " , swipe:3:ru, exec, $wofi"
             " , swipe:3:lu, exec, wvkbd-mobintl"
@@ -523,7 +523,7 @@
       # # bind key to toggle overview (normal)
       # bind = $mainMod, grave, scroller:toggleoverview
       # bind = ,mouse:275, scroller:toggleoverview
-      # bind = $mainMod, grave, hyprexpo:expo, toggle
+      bind = $mainMod, grave, hyprexpo:expo, toggle
 
       # # Marks
       # bind = $mainMod, M, exec, notify-send "Scroller Submap" "Add Marks Mode - Use A/B/C to mark, ESC to exit"
