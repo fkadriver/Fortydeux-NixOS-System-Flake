@@ -128,6 +128,12 @@
     xkb.variant = "";
   };
 
+  # OOM
+  systemd.oomd.enable = true;
+
+  # Swappiness
+  boot.kernel.sysctl."vm.swappiness" = 20;
+
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
