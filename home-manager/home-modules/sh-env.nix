@@ -78,6 +78,7 @@
       ffy = "cd ~/fortyflake && yazi";
       stat = "git status";
       st = "git status -s";
+      kncaudio = "cd ~/pCloudDrive/KNC-Audio";
       teach = "cd ~/pCloudDrive/Shared-TobAnni/T-KNCS-Teaching";
       zzz = "zellij";
       reset-audio = "systemctl --user restart pipewire wireplumber && sleep 2";

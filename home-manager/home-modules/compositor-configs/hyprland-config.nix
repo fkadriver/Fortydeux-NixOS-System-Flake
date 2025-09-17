@@ -95,7 +95,7 @@
       exec-once = [
         "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY"
         "hyprctl setcursor phinger-cursors 32"
-        "emacs --daemon"
+        # "emacs --daemon"
         "foot -s"
         # "waybar"  # Removed - now handled by systemd integration
         "mako"
@@ -215,7 +215,7 @@
         "CTRL ALT, T, exec, wezterm"
         "$mainMod SHIFT, T, exec, alacritty"
         "$mainMod, Q, killactive,"
-        "$mainModSHIFT, E, exit,"
+        "$mainMod SHIFT, E, exit,"
         "$mainMod, E, exec, nautilus"
         "$mainMod, Return, togglefloating,"
         "$mainMod, D, exec, rofi -show drun -show-icons"
