@@ -14,14 +14,15 @@
       ./waybar-config.nix
       ./hypridle-config.nix
       # ./hyprlock-config.nix
-      inputs.hyprshell.homeModules.hyprshell
+      # inputs.hyprshell.homeModules.hyprshell
     ];
   services.hyprpaper = {
     enable = true;
   };
   home.packages = with pkgs; [
     # inputs.hyprland-qtutils.packages.${pkgs.system}.default
-    iio-hyprland
+    iio-hyprland # Hyprland tablet layout listener/changer
+    wvkbd # On-screen virtual keyboard for wlroots
     # Add hyprscrolling plugin to system packages
     # hyprlandPlugins.hyprscrolling
     # hyprlandPlugins.hyprexpo
@@ -32,39 +33,11 @@
     enable = true;
     # extraPortals = [ pkgs.xdg-desktop-portal-hyprland ]; 
   };
-  # Hyprshell Plugin
-  # programs.hyprshell = {
-  #   enable = true;
-  #   systemd.args = "-v";
-  #   settings = {
-  #     windows = {
-  #       enable = true;
-  #       overview = {
-  #         enable = true;
-  #         # key = "super_tab";
-  #         # modifier = "alt";
-  #         launcher = {
-  #           max_items = 6;
-  #           plugins.websearch = {
-  #               enable = true;
-  #               engines = [{
-  #                   name = "DuckDuckGo";
-  #                   url = "https://duckduckgo.com/?q=%s";
-  #                   key = "d";
-  #               }];
-  #           };
-  #         };
-  #       };
-  #       switch.enable = false;
-  #     };
-  #   };
-  # };
   wayland.windowManager.hyprland = {
     enable = true;
     # systemd.enable = false;
-    # package = pkgs.hyprland;
-    package = inputs.hyprland.packages.${pkgs.system}.default;
-    # package = pkgs.hyprland;
+    package = pkgs.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.system}.default;
     # systemd.variables = ["--all"];
     plugins = [
       # Hyprgrass plugin
@@ -73,12 +46,12 @@
       # Hyprscroller plugin - commented out, switching to hyprscrolling
       # pkgs.hyprlandPlugins.hyprscroller
       # HyprExpo
-      # pkgs.hyprlandPlugins.hyprexpo
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      pkgs.hyprlandPlugins.hyprexpo
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
       # inputs.hyprscroller.packages.${pkgs.system}.default
       # New official hyprscrolling plugin from hyprland-plugins flake input
-      # pkgs.hyprlandPlugins.hyprscrolling
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling
+      pkgs.hyprlandPlugins.hyprscrolling
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling
     ];
     settings = {
       "$mainMod" = "SUPER";
@@ -248,7 +221,7 @@
         # Hyprshell - Application/Workspace Switcher (manual keybindings as fallback)
         # Since plugin compilation fails, we need manual keybindings
         # Use Alt + Super + Tab as per Hyprshell config
-        "SUPER, Tab, exec, ${inputs.hyprshell.packages.${pkgs.system}.default}/bin/hyprshell socat '\"OpenOverview\"'"
+        # "SUPER, Tab, exec, ${inputs.hyprshell.packages.${pkgs.system}.default}/bin/hyprshell socat '\"OpenOverview\"'"
 
         # Volume
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
