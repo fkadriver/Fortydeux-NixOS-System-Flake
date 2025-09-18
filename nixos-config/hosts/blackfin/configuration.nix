@@ -10,6 +10,7 @@
   imports = [
     ../../system-modules/common-config.nix
     ../../system-modules/extraPackages.nix
+    ../../system-modules/extraLargePackages.nix
     ../../system-modules/display-manager.nix
     ../../system-modules/plasma.nix
     ../../system-modules/window-managers.nix

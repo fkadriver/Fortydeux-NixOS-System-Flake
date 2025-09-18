@@ -11,9 +11,10 @@
   imports = [
     ../../system-modules/common-config.nix
     ../../system-modules/extraPackages.nix
+    # ../../system-modules/extraLargePackages.nix
     ../../system-modules/display-manager.nix
     ../../system-modules/plasma.nix
-    ../../system-modules/window-managers.nix
+    # ../../system-modules/window-managers.nix
     # ../../system-modules/cosmic-desktop.nix
     ../../system-modules/extraFonts.nix
     # ../../system-modules/virtualisation.nix
