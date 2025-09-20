@@ -36,13 +36,14 @@
   wayland.windowManager.hyprland = {
     enable = true;
     # systemd.enable = false;
-    package = pkgs.hyprland;
-    # package = inputs.hyprland.packages.${pkgs.system}.default;
+    # package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.default;
     # systemd.variables = ["--all"];
     plugins = [
+      # Use system packages instead of flake inputs to avoid NIX_MAIN_PROGRAM conflicts
       # Hyprgrass plugin
       # pkgs.hyprlandPlugins.hyprgrass
-      inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
+      # inputs.hyprgrass.packages.${pkgs.system}.hyprgrass
       # Hyprscroller plugin - commented out, switching to hyprscrolling
       # pkgs.hyprlandPlugins.hyprscroller
       # HyprExpo
@@ -334,30 +335,30 @@
           focus_fit_method = 0;  # 0 = center, 1 = fit
           follow_focus = true;   # Layout moves to make focused window visible
         };
-        # Hyprgrass
-        touch_gestures = {
-          workspace_swipe_fingers = 4;
-          # default sensitivity is probably too low on tablet screens,
-          # I recommend turning it up to 4.0
-          sensitivity = 8.0;
-          # NOTE: swipe events only trigger for finger count of >= 3
-          hyprgrass-bind = [
-            " , swipe:3:l, movefocus, r"
-            " , swipe:3:r, movefocus, l"
-            " , swipe:3:u, movefocus, d"
-            " , swipe:3:d, movefocus, u"
-            " , swipe:4:u, hyprexpo:expo, toggle"
-            " , swipe:4:d, hyprexpo:expo, toggle"
-            " , swipe:3:ld, killactive"
-            " , swipe:3:ru, exec, $wofi"
-            " , swipe:3:lu, exec, wvkbd-mobintl"
-            " , swipe:3:rd, exec, pkill wvkbd-mobintl"
-          ];
-          hyprgrass-bindm = [
-            " , longpress:2, movewindow"
-            " , longpress:3, resizewindow"
-          ];
-        };
+         # Hyprgrass - commented out since we're not using the plugin
+         # touch_gestures = {
+         #   workspace_swipe_fingers = 4;
+         #   # default sensitivity is probably too low on tablet screens,
+         #   # I recommend turning it up to 4.0
+         #   sensitivity = 8.0;
+         #   # NOTE: swipe events only trigger for finger count of >= 3
+         #   hyprgrass-bind = [
+         #     " , swipe:3:l, movefocus, r"
+         #     " , swipe:3:r, movefocus, l"
+         #     " , swipe:3:u, movefocus, d"
+         #     " , swipe:3:d, movefocus, u"
+         #     " , swipe:4:u, hyprexpo:expo, toggle"
+         #     " , swipe:4:d, hyprexpo:expo, toggle"
+         #     " , swipe:3:ld, killactive"
+         #     " , swipe:3:ru, exec, $wofi"
+         #     " , swipe:3:lu, exec, wvkbd-mobintl"
+         #     " , swipe:3:rd, exec, pkill wvkbd-mobintl"
+         #   ];
+         #   hyprgrass-bindm = [
+         #     " , longpress:2, movewindow"
+         #     " , longpress:3, resizewindow"
+         #   ];
+         # };
       };
     };
     extraConfig = ''
