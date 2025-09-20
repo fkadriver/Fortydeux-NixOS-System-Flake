@@ -36,8 +36,8 @@
   wayland.windowManager.hyprland = {
     enable = true;
     # systemd.enable = false;
-    # package = pkgs.hyprland;
-    package = inputs.hyprland.packages.${pkgs.system}.default;
+    package = pkgs.hyprland;
+    # package = inputs.hyprland.packages.${pkgs.system}.default;
     # systemd.variables = ["--all"];
     plugins = [
       # Use system packages instead of flake inputs to avoid NIX_MAIN_PROGRAM conflicts
