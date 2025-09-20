@@ -34,6 +34,7 @@ APP_MAP["Helix"]="helix"
 APP_MAP["Micro"]="micro"
 APP_MAP["Neovim"]="nvim"
 APP_MAP["Gedit"]="gedit"
+APP_MAP["Apostrophe"]="apostrophe"
 APP_MAP["Gwenview"]="gwenview"
 APP_MAP["Feh"]="feh"
 APP_MAP["Sxiv"]="sxiv"
@@ -75,7 +76,7 @@ case "$MIME_TYPE" in
     text/*|text/x-*|application/json|application/xml|text/yaml|text/x-toml|text/x-nix|text/x-shellscript)
         # Text/Code files
         echo "📝 Text & Code Editors" >&2
-        apps=("Visual Studio Code" "Cursor" "Zed Editor" "Kate" "Lapce" "Ghostwriter" "Helix" "Micro" "Neovim" "Gedit")
+        apps=("Visual Studio Code" "Cursor" "Zed Editor" "Kate" "Lapce" "Ghostwriter" "Apostrophe" "OnlyOffice" "Helix" "Micro" "Neovim" "Gedit")
         for app in "${apps[@]}"; do
             if command -v "${APP_MAP["$app"]}" >/dev/null 2>&1; then
                 APP_LIST="$APP_LIST

@@ -29,6 +29,7 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # hello
+    apostrophe # Distraction-free Markdown editor for GNU/Linux
     # anytype #P2P note-taking tool
     barrier #Open-source KVM software
     cachix #Command-line client for Nix binary cache hosting https://cachix.org
@@ -229,6 +230,7 @@
             { run = "lapce \"$@\""; desc = "Lapce"; }
             { run = "ghostwriter \"$@\""; desc = "Ghostwriter"; }
             { run = "okular \"$@\""; desc = "Okular"; }
+            { run = "apostrophe \"$@\""; desc = "Apostrophe"; }
             { run = "onlyoffice-desktopeditors \"$@\""; desc = "OnlyOffice"; }
             { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
