@@ -229,6 +229,7 @@
             { run = "lapce \"$@\""; desc = "Lapce"; }
             { run = "ghostwriter \"$@\""; desc = "Ghostwriter"; }
             { run = "okular \"$@\""; desc = "Okular"; }
+            { run = "onlyoffice-desktopeditors \"$@\""; desc = "OnlyOffice"; }
             { run = "${config.home.homeDirectory}/.config/scripts/app-picker.sh \"$@\""; desc = "Application Picker"; }
           ];
           
