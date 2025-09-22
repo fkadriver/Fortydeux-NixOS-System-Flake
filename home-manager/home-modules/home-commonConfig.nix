@@ -232,6 +232,8 @@
             { run = "kate \"$@\""; desc = "Kate"; }
             { run = "lapce \"$@\""; desc = "Lapce"; }
             { run = "ghostwriter \"$@\""; desc = "Ghostwriter"; }
+            { run = "formiko \"$@\""; desc = "Formiko"; }
+            { run = "retext \"$@\""; desc = "ReText"; }
             { run = "okular \"$@\""; desc = "Okular"; }
             { run = "apostrophe \"$@\""; desc = "Apostrophe"; }
             { run = "onlyoffice-desktopeditors \"$@\""; desc = "OnlyOffice"; }
@@ -428,6 +430,13 @@
             { name = "*.csv"; use = [ "document" "reveal" ]; }
             { name = "*.txt"; use = [ "edit" "reveal" ]; }
             { name = "*.md"; use = [ "edit" "reveal" ]; }
+            { name = "*.markdown"; use = [ "edit" "reveal" ]; }
+            { name = "*.mdown"; use = [ "edit" "reveal" ]; }
+            { name = "*.mkd"; use = [ "edit" "reveal" ]; }
+            { name = "*.mkdn"; use = [ "edit" "reveal" ]; }
+            { name = "*.mdwn"; use = [ "edit" "reveal" ]; }
+            { name = "*.mdtxt"; use = [ "edit" "reveal" ]; }
+            { name = "*.mdtext"; use = [ "edit" "reveal" ]; }
             { name = "*.rst"; use = [ "edit" "reveal" ]; }
             { name = "*.log"; use = [ "edit" "reveal" ]; }
             
