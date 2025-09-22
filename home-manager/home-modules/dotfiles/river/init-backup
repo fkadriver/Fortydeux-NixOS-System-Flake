@@ -45,7 +45,7 @@ riverctl map normal Super W  spawn "rofi -show drun -show-icons"
 riverctl map normal Super B spawn "pkill -f waybar || waybar -c ~/.config/river/waybar/config -s ~/.config/river/waybar/style.css"
 
 # Power Menu
-riverctl map normal Control+Super P spawn "wlogout"
+riverctl map normal Control+Super P spawn "wleave"
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next

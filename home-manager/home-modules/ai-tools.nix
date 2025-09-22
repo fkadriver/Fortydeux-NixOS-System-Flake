@@ -14,4 +14,8 @@
     windsurf #Agentic IDE powered by AI Flow paradigm
     zed-editor #Modern text editor with AI built in - still in development for Linux
   ]);
+
+  programs.fabric-ai = {
+    enable = true;
+  };
 }

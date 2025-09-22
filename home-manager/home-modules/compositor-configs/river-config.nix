@@ -91,7 +91,7 @@ in
             # Launchers
             "Control Space" = "spawn 'fuzzel -w 80 -b 181818ef -t ccccccff'";
             "Super W" = "spawn 'rofi -show drun -show-icons'";
-            "Control+Super P" = "spawn wlogout";
+            "Control+Super P" = "spawn wleave";
             
             # Navigation
             "Super J" = "focus-view next";

@@ -190,8 +190,8 @@
 
         "custom/power" = {
           format = "⏻";
-          on-click = "exec wlogout";
-          on-click-right = "pkill wlogout";
+          on-click = "exec wleave";
+          on-click-right = "pkill wleave";
         };
 
         "custom/dictate" = {

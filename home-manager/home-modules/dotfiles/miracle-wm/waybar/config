@@ -24,8 +24,8 @@
 
     "custom/power": {
         "format": "⏻",
-        "on-click": "wlogout",
-        "on-click-right": "pkill wlogout",
+        "on-click": "wleave",
+        "on-click-right": "pkill wleave",
         "tooltip-text": "Power menu"
     },
 

@@ -40,6 +40,7 @@
     ext4magic #Recover / undelete files from ext3 or ext4 partitions
     extundelete #Utility that can recover deleted files from an ext3 or ext4 partition
     fish #Fish terminal
+    formiko # reStructured Text editor and live previewer
     # freetube #An Open Source YouTube app for privacy
     # fuzzel # Wayland launcher
     gh #Github CLI tool 
@@ -67,6 +68,7 @@
     nix-melt # A ranger-like flake.lock viewer
     nix-search-cli # CLI for searching packages on search.nixos.org
     nix-search-tv # Fuzzy search for Nix packages
+    nvchecker # New version checker for software
     # obs-studio #Screen recorder       
     patchance # JACK Patchbay GUI
     pdfgrep # Commandline utility to search text in PDF files
@@ -74,6 +76,7 @@
     pyradio #Curses based internet radio
     radio-cli #Simple radio CLI written in rust
     reaper #Reaper DAW
+    retext # Editor for Markdown and reStructuredText
     rustscan #Nmap scanner written in Rust
     satty #Modern Screenshot Annotation tool
     # shotcut #Open-source cross-platform video editor

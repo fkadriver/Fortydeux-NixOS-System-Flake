@@ -120,7 +120,7 @@ in
         binding_lock = <super> KEY_L
         command_lock = swaylock
         binding_logout = <super> <shift> KEY_L
-        command_logout = wlogout
+        command_logout = wleave
         binding_exit = <super> <shift> KEY_E
         command_exit = pkill -KILL wayfire
         binding_mute = KEY_MUTE
@@ -680,7 +680,7 @@ in
         logout_command = wayland-logout
         menu_fuzzy_search = true
         menu_icon = /home/${username}/.config/logos/nix-snowflake-colours.svg
-        menu_logout_command = wlogout
+        menu_logout_command = wleave
         menu_min_content_height = 500
         menu_min_content_width = 500
         middle_click_close = false

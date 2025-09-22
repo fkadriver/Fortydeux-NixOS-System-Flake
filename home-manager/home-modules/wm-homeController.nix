@@ -73,4 +73,8 @@
     };
   };
 
+  programs.wleave = {
+    enable = true;
+  }; 
+
 }
