@@ -219,6 +219,9 @@
         #}) + "/plugins";
       };
     };
+    radio-active = {
+      enable = true;
+    };
     yazi = {
       enable = true;
       settings = {
