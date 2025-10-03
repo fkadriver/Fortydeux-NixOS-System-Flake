@@ -105,7 +105,7 @@
           ];
           specialArgs = { inherit inputs username; };
         };
-        #--latttude=7480 host--#
+        #--latitude-7480 host--#
         latitude-7480 = lib.nixosSystem {
           inherit system;
           modules = [ 
