@@ -55,7 +55,7 @@
     anyrun.url = "github:anyrun-org/anyrun";
     #MusNix
     musnix.url = "github:musnix/musnix";
-  }g
+  };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs: 
     let
