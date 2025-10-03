@@ -5,6 +5,7 @@
     ./mime-config.nix
     ./screenshot-tools.nix
     ./ai-tools.nix
+    inputs.nixvim.homeModules.nixvim
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -31,7 +32,6 @@
     # hello
     apostrophe # Distraction-free Markdown editor for GNU/Linux
     # anytype #P2P note-taking tool
-    barrier #Open-source KVM software
     cachix #Command-line client for Nix binary cache hosting https://cachix.org
     # cheese # Cheesy camera app
     ctune # Ncurses internet radio TUI
@@ -126,6 +126,9 @@
     # '')
      
   programs = {
+    emacs = {
+      enable = true;
+    };
     fzf.enable = true;
     fuzzel = {
       enable = true;
@@ -175,6 +178,14 @@
           };
           auto-format = false;
         }];       
+      };
+    };
+    nixvim = {
+      enable = true;
+      waylandSupport = true;
+      plugins = {
+        chatgpt.enable = true;
+        orgmode.enable = true;
       };
     };
     nnn = {

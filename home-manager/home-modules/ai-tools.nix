@@ -6,6 +6,7 @@
   ];
 
   home.packages = (with pkgs; [
+    aichat #LLMs in the command line with repl, sessions, etc. 
     appflowy #An open-source alternative to Notion - now with AI drafting features
     code-cursor #AI-powered code editor built on vscode
     tenere #Rust-based TUI for interacting with AI LLMs

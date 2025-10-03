@@ -122,10 +122,10 @@
     	source = ./dotfiles/niri/waybar;
     	recursive = true;
     };
-    ".config/nvim" = {
-    	source = ./dotfiles/nvim;
-    	recursive = true;
-    }; 
+    # ".config/nvim" = {
+    # 	source = ./dotfiles/nvim;
+    # 	recursive = true;
+    # }; 
     ".config/ranger" = {
     	source = ./dotfiles/ranger;
     	recursive = true;
