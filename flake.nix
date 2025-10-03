@@ -55,11 +55,11 @@
     anyrun.url = "github:anyrun-org/anyrun";
     #MusNix
     musnix.url = "github:musnix/musnix";
-  };
+  }g
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs: 
     let
-      username = "fortydeux";  # Change this to your username
+      username = "scott";  # Change this to your username
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -104,8 +104,15 @@
             ./nixos-config/hosts/blacktetra/configuration.nix 
           ];
           specialArgs = { inherit inputs username; };
+        };
+        #--latttude=7480 host--#
+        latitude-7480 = lib.nixosSystem {
+          inherit system;
+          modules = [ 
+            ./nixos-config/hosts/latitude-7480/configuration.nix 
+          ];
+          specialArgs = { inherit inputs username; };
         }; 
-
       };
 
       ##--Home-Manager Configuration--##     
@@ -150,6 +157,14 @@
             ./home-manager/hosts/blacktetra-home.nix
           ];
         }; 
+         #--latitude-7480 host--#
+        "${username}@latitude-7480" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs username; };
+          modules = [
+            ./home-manager/hosts/latitude-7480-home.nix
+          ];
+        };
       }; 
    }; 
 } 
